@@ -17,7 +17,8 @@ body {
     display: flex;
     flex-direction: row;
     font-family: 'Tangerine', serif;
-    font-size: 28px;
+    font-size: 2rem;
+    box-sizing: border-box;
 }
 
 a {
@@ -195,4 +196,21 @@ footer {
     width: 100%;
     text-align: center;
     color: var(--primary-color-text);
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+@media(max-width:768px) {
+    body {
+        flex-direction: column;
+    }
+    .card {
+        flex-direction: column;
+    }
+    .containerForm {
+        width: 85vw;
+    }
+    section aside img {
+        width: 94vw;
+    }
 }
