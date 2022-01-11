@@ -15,159 +15,161 @@
 </head>
 
 <body>
-    <header id="top">
-        <nav>
-            <div>
-                <img src="imgs/myImage.jpg" alt="MyImage">
+    <div class="bodyStructure">
+        <header id="top">
+            <nav>
+                <div>
+                    <img src="imgs/myImage.jpg" alt="MyImage">
+                </div>
+                <ul>
+                    <li class="bi bi-house-door">
+                        <a href="#home">HOME</a>
+                    </li>
+                    <li class="bi bi-info-circle-fill">
+                        <a href="#about">ABOUT-US</a>
+                    </li>
+                    <li class="bi bi-sliders">
+                        <a href="#services">SERVICES</a>
+                    </li>
+                    <li class="bi bi-person-lines-fill">
+                        <a href="#contact">CONTACT-US</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="container">
+            <div class="lineStyle"></div>
+            <section id="home" class="card">
+                <main>
+                    <h1>Personal Info</h1>
+                    <h3>Full Name:</h3>
+                    <h5>Emran Ali Abdullah Muhammed Saeed</h5>
+                    <hr>
+                    <h3>Birth date:</h3>
+                    <h5>6/6/1999</h5>
+                    <hr>
+                    <h3>Material Status:</h3>
+                    <h5>Single</h5>
+                    <hr>
+                </main>
+
+                <aside>
+                    <img src="imgs/myImage.jpg" alt="MyImage">
+                </aside>
+            </section>
+            <hr>
+            <div class="summary">
+                <h1>Summary</h1>
+                <p>
+                    Computer expert for everything, Excellent computer typing in English and Arabic, very good Photoshop designer, very good web designer in front-end and back-end, very good Android Application Designer.
+                </p>
             </div>
-            <ul>
-                <li class="bi bi-house-door">
-                    <a href="#home">HOME</a>
-                </li>
-                <li class="bi bi-info-circle-fill">
-                    <a href="#about">ABOUT-US</a>
-                </li>
-                <li class="bi bi-sliders">
-                    <a href="#services">SERVICES</a>
-                </li>
-                <li class="bi bi-person-lines-fill">
-                    <a href="#contact">CONTACT-US</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+            <div class="lineStyle"></div>
+            <section id="about" class="card">
+                <main>
+                    <h1>Skills</h1>
+                    <ul>
+                        <li>Project management.</li>
+                        <li>Strong decision maker.</li>
+                        <li>Complex problem solver.</li>
+                        <li>Proficient in standard Microsoft Office package (Word, Access, PowerPoint) and typing.</li>
+                        <li>Yemen experience house-programmer 5-2019 – to now.</li>
 
-    <div class="container">
-        <div class="lineStyle"></div>
-        <section id="home" class="card">
-            <main>
-                <h1>Personal Info</h1>
-                <h3>Full Name:</h3>
-                <h5>Emran Ali Abdullah Muhammed Saeed</h5>
-                <hr>
-                <h3>Birth date:</h3>
-                <h5>6/6/1999</h5>
-                <hr>
-                <h3>Material Status:</h3>
-                <h5>Single</h5>
-                <hr>
-            </main>
+                    </ul>
 
-            <aside>
-                <img src="imgs/myImage.jpg" alt="MyImage">
-            </aside>
-        </section>
-        <hr>
-        <div class="summary">
-            <h1>Summary</h1>
-            <p>
-                Computer expert for everything, Excellent computer typing in English and Arabic, very good Photoshop designer, very good web designer in front-end and back-end, very good Android Application Designer.
-            </p>
+                </main>
+                <aside>
+                    <h1>Experience</h1>
+                    <ul>
+                        <li>java</li>
+                        <li>C++</li>
+                        <li>C#</li>
+                        <li>HTML</li>
+                        <li>HTML5</li>
+                        <li>PHP</li>
+                        <li>JavaScript</li>
+                        <li>Ajax</li>
+                        <li>JQuery</li>
+                        <li>Python</li>
+                        <li>Android Studio</li>
+                        <li>Assembly 80x86</li>
+                    </ul>
+                    <hr>
+                    <ul>
+
+                        <li>oracle database</li>
+                        <li>SQL server</li>
+                        <li>SQLite</li>
+                        <li>MYSQL</li>
+                    </ul>
+                </aside>
+            </section>
+            <div class="lineStyle"></div>
+            <section id="services" class="card">
+                <main>
+                    <h1>Prev Works</h1>
+                    <div class="gridShow">
+                        <img src="imgs/screenshot.png" alt="work1">
+                        <img src="imgs/screenshot2.png" alt="work2">
+                        <img src="imgs/screenshot3.png" alt="work3">
+                        <img src="imgs/screenshot4.png" alt="work4">
+                        <img src="imgs/screenshot5.png" alt="work5">
+                        <img src="imgs/work3.JPG" alt="work6">
+                        <img src="imgs/work4.png" alt="work7">
+                    </div>
+                </main>
+
+                <div>
+
+                </div>
+            </section>
+            <div class="lineStyle"></div>
+            <section id="contact" class="card">
+                <main>
+                    <h1>Contact Informations</h1>
+                    <h3>Address:</h3>
+                    <h5>Saber mountain – Taiz - Yemen</h5>
+                    <hr>
+                    <h3>Phone:</h3>
+                    <h5>+967 770-774-255</h5>
+                    <hr>
+                    <h3>Email:</h3>
+                    <h5>alhaddademran@gmail.com</h5>
+                    <hr>
+                </main>
+                <aside>
+                    <div class="containerForm">
+                        <form action="">
+
+                            <label for="fname">First Name</label>
+                            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+                            <label for="lname">Last Name</label>
+                            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+                            <label for="country">Country</label>
+                            <select id="country" name="country">
+                            <option value="taiz">Taiz</option>
+                            <option value="sana'a">Sana'a</option>
+                            <option value="hadramoot">Hadramoot</option>
+                          </select>
+
+                            <label for="subject">Subject</label>
+                            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+                            <input type="submit" value="Submit">
+
+                        </form>
+                    </div>
+
+                </aside>
+            </section>
         </div>
-        <div class="lineStyle"></div>
-        <section id="about" class="card">
-            <main>
-                <h1>Skills</h1>
-                <ul>
-                    <li>Project management.</li>
-                    <li>Strong decision maker.</li>
-                    <li>Complex problem solver.</li>
-                    <li>Proficient in standard Microsoft Office package (Word, Access, PowerPoint) and typing.</li>
-                    <li>Yemen experience house-programmer 5-2019 – to now.</li>
-
-                </ul>
-
-            </main>
-            <aside>
-                <h1>Experience</h1>
-                <ul>
-                    <li>java</li>
-                    <li>C++</li>
-                    <li>C#</li>
-                    <li>HTML</li>
-                    <li>HTML5</li>
-                    <li>PHP</li>
-                    <li>JavaScript</li>
-                    <li>Ajax</li>
-                    <li>JQuery</li>
-                    <li>Python</li>
-                    <li>Android Studio</li>
-                    <li>Assembly 80x86</li>
-                </ul>
-                <hr>
-                <ul>
-
-                    <li>oracle database</li>
-                    <li>SQL server</li>
-                    <li>SQLite</li>
-                    <li>MYSQL</li>
-                </ul>
-            </aside>
-        </section>
-        <div class="lineStyle"></div>
-        <section id="services" class="card">
-            <main>
-                <h1>Prev Works</h1>
-                <div class="gridShow">
-                    <img src="imgs/screenshot.png" alt="work1">
-                    <img src="imgs/screenshot2.png" alt="work2">
-                    <img src="imgs/screenshot3.png" alt="work3">
-                    <img src="imgs/screenshot4.png" alt="work4">
-                    <img src="imgs/screenshot5.png" alt="work5">
-                    <img src="imgs/work3.JPG" alt="work6">
-                    <img src="imgs/work4.png" alt="work7">
-                </div>
-            </main>
-
-            <div>
-
-            </div>
-        </section>
-        <div class="lineStyle"></div>
-        <section id="contact" class="card">
-            <main>
-                <h1>Contact Informations</h1>
-                <h3>Address:</h3>
-                <h5>Saber mountain – Taiz - Yemen</h5>
-                <hr>
-                <h3>Phone:</h3>
-                <h5>+967 770-774-255</h5>
-                <hr>
-                <h3>Email:</h3>
-                <h5>alhaddademran@gmail.com</h5>
-                <hr>
-            </main>
-            <aside>
-                <div class="containerForm">
-                    <form action="">
-
-                        <label for="fname">First Name</label>
-                        <input type="text" id="fname" name="firstname" placeholder="Your name..">
-
-                        <label for="lname">Last Name</label>
-                        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-
-                        <label for="country">Country</label>
-                        <select id="country" name="country">
-                        <option value="taiz">Taiz</option>
-                        <option value="sana'a">Sana'a</option>
-                        <option value="hadramoot">Hadramoot</option>
-                      </select>
-
-                        <label for="subject">Subject</label>
-                        <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-
-                        <input type="submit" value="Submit">
-
-                    </form>
-                </div>
-
-            </aside>
-        </section>
     </div>
     <footer>
         <h2>Copy rights &copy; 2022 </h2>
-        <a href="#top"> <i class="bi bi-arrow-up-circle-fill"></i></a>
+        <a href="#top" id="buttonUp"> <i class="bi bi-arrow-up-circle-fill"></i></a>
     </footer>
 
 
