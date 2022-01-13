@@ -8,6 +8,8 @@
     --secondary-color-text: #dfd;
     --secondary-color-bg: #00ff72;
     --primary-hover-color: #437c94;
+    --border-focused-false: rgb(145, 16, 16);
+    --border-focused-true: rgb(94, 255, 0);
     --current-body-color: var(--primary-light-body);
     --current-bg-color: var(--primary-light-bg);
     --current-text-color: var(--primary-light-text);
@@ -218,10 +220,7 @@ aside {
 
 /* Style inputs with type="text", select elements and textareas */
 
-input[type=text],
-input[type=email],
-select,
-textarea {
+.styled {
     width: 100%;
     /* Full width */
     padding: 12px;
@@ -236,8 +235,9 @@ textarea {
     /* Add a top margin */
     margin-bottom: 16px;
     /* Bottom margin */
-    resize: vertical
+    resize: vertical;
     /* Allow the user to vertically resize the textarea (not horizontally) */
+    border-left: 5px solid var(--border-focused-false);
 }
 
 
@@ -508,4 +508,13 @@ input:checked+.slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+.inputFaildLightThem {
+    border-color: var(--border-focused-false);
+}
+
+.inputSuccessLightThem {
+    border-left: 5px solid;
+    border-color: var(--border-focused-true);
 }

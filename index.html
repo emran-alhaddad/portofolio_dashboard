@@ -14,7 +14,7 @@
 
 </head>
 
-<body>
+<body onload="disapleAll();">
     <div class="bodyStructure">
         <header id="top">
             <nav>
@@ -233,16 +233,16 @@
                 </main>
                 <aside>
                     <div class="containerForm">
-                        <form action="">
+                        <form action="mailto:alhaddademran@gmail.com">
 
-                            <label for="fname">Full Name</label>
-                            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                            <label for="fname">Name</label>
+                            <input class="styled" onkeyup="validateName(this);" type="text" id="fname" name="firstname" placeholder="Your name..">
 
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="Your Email..">
+                            <input class="input styled" onkeyup="validateEmail(this);" type="email" id="email" name="email" placeholder="Your Email..">
 
                             <label for="service">Service</label>
-                            <select id="service" name="service">
+                            <select class="input styled" id="service" name="service">
                             <option value="android">Android</option>
                             <option value="frontend">Frontend</option>
                             <option value="backend">Backend</option>
@@ -250,9 +250,9 @@
                           </select>
 
                             <label for="subject">Subject</label>
-                            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                            <textarea class="input styled" onkeyup="validateMSG(this);" id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
 
-                            <input type="submit" value="Submit">
+                            <input class="input" type="submit" id="submit" value="Submit">
 
                         </form>
                     </div>
