@@ -22,6 +22,7 @@ body {
     font-family: 'Comfortaa', cursive;
     font-size: 1rem;
     box-sizing: border-box;
+    text-align: justify;
 }
 
 a {
@@ -42,13 +43,18 @@ header nav {
     flex-direction: column;
 }
 
-header nav>div {
+header nav section {
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
 }
 
-header nav>div img {
-    width: 200px;
-    margin: 20px;
+header nav img {
+    width: 160px;
+    margin: 2vw;
     border-radius: 50%;
 }
 
@@ -57,7 +63,37 @@ header nav ul {
     flex-direction: column;
     flex-wrap: wrap;
     align-content: center;
-    justify-content: center;
+    justify-content: left;
+}
+
+.toggleMenuButton {
+    display: none;
+    font-size: 10vw;
+    padding-right: 7vw;
+}
+
+.closeButton {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 40px;
+    transition: 0.5;
+}
+
+.overlay {
+    width: 100%;
+    height: 65%;
+    background-color: var(--primary-color-bg);
+    position: fixed;
+    top: -500px;
+    left: 0;
+    padding-top: 40px;
+    transition: 1s;
+}
+
+.closeButton:hover {
+    color: darkred;
 }
 
 header nav ul li {
@@ -296,6 +332,15 @@ footer h2 {
 }
 
 @media(max-width:768px) {
+    header nav {
+        flex-direction: row;
+    }
+    /* header nav ul {
+        display: none;
+    } */
+    header nav img {
+        width: 20vw;
+    }
     .bodyStructure {
         flex-direction: column;
     }
@@ -306,7 +351,7 @@ footer h2 {
         width: 81vw;
     }
     section aside img {
-        width: 85vw;
+        width: 75vw;
         border-radius: 5%;
     }
     .gridShow {
@@ -330,6 +375,22 @@ footer h2 {
     #contact a {
         font-size: 7vw;
     }
+    .toggleMenuButton {
+        display: inline;
+    }
+    #myNav {
+        width: 100%;
+        height: 65%;
+        background-color: var(--primary-color-bg);
+        position: fixed;
+        top: -500px;
+        left: 0;
+        padding-top: 40px;
+        transition: 1s;
+    }
+    .closeButton {
+        display: inline;
+    }
 }
 
 @media(max-width:1000px) and ( min-width:769px) {
@@ -338,7 +399,7 @@ footer h2 {
         flex-direction: column;
     }
     #home img {
-        width: 61vw;
+        width: 50vw;
         border-radius: 5%;
     }
     .gridShow img {

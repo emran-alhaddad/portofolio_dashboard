@@ -18,26 +18,30 @@
     <div class="bodyStructure">
         <header id="top">
             <nav>
-                <div>
+                <section>
                     <img src="imgs/myImage.jpg" alt="MyImage">
+                    <i class="bi bi-menu-button-wide-fill toggleMenuButton " onclick="openNav();"></i>
+                </section>
+                <div id="myNav">
+                    <i class="bi bi-x-lg closeButton" onclick="closeNav()"></i>
+                    <ul class="overlay-content">
+                        <li class="bi bi-house-door">
+                            <a href="#home">HOME</a>
+                        </li>
+                        <li class="bi bi-info-circle-fill">
+                            <a href="#about">ABOUT-US</a>
+                        </li>
+                        <li class="bi bi-clock-history">
+                            <a href="#prev">Prev Works</a>
+                        </li>
+                        <li class="bi bi-sliders">
+                            <a href="#services">SERVICES</a>
+                        </li>
+                        <li class="bi bi-person-lines-fill">
+                            <a href="#contact">CONTACT-US</a>
+                        </li>
+                    </ul>
                 </div>
-                <ul>
-                    <li class="bi bi-house-door">
-                        <a href="#home">HOME</a>
-                    </li>
-                    <li class="bi bi-info-circle-fill">
-                        <a href="#about">ABOUT-US</a>
-                    </li>
-                    <li class="bi bi-clock-history">
-                        <a href="#prev">Prev Works</a>
-                    </li>
-                    <li class="bi bi-sliders">
-                        <a href="#services">SERVICES</a>
-                    </li>
-                    <li class="bi bi-person-lines-fill">
-                        <a href="#contact">CONTACT-US</a>
-                    </li>
-                </ul>
             </nav>
         </header>
 
