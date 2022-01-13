@@ -10,21 +10,26 @@
     --primary-hover-color: #437c94;
     --border-focused-false: rgb(145, 16, 16);
     --border-focused-true: rgb(94, 255, 0);
+    --dark-hover: #13516a;
+    --light-hover: white;
     --current-body-color: var(--primary-light-body);
     --current-bg-color: var(--primary-light-bg);
     --current-text-color: var(--primary-light-text);
+    --current-hover: var(--dark-hover);
 }
 
 .Dark-Them {
     --current-body-color: var(--primary-dark-body);
     --current-bg-color: var(--primary-dark-bg);
     --current-text-color: var(--primary-dark-text);
+    --current-hover: var(--light-hover);
 }
 
 .Light-Them {
     --current-body-color: var(--primary-light-body);
     --current-bg-color: var(--primary-light-bg);
     --current-text-color: var(--primary-light-text);
+    --current-hover: var(--dark-hover);
 }
 
 * {
@@ -218,7 +223,7 @@ aside {
 
 #contact a:hover {
     transform: rotateZ(360deg) scale(1.5);
-    color: darkred;
+    color: var(--current-hover);
 }
 
 
