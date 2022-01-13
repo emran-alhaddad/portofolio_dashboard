@@ -1,10 +1,28 @@
 :root {
-    --primary-color-text: #fff;
-    --primary-color-bg: #6593A6;
+    --primary-light-text: #333;
+    --primary-light-bg: #6593A6;
+    --primary-light-body: rgb(233, 232, 232);
+    --primary-dark-text: #fff;
+    --primary-dark-bg: #a9adaf;
+    --primary-dark-body: #333;
     --secondary-color-text: #dfd;
     --secondary-color-bg: #00ff72;
-    --primary-body-color: rgb(233, 232, 232);
     --primary-hover-color: #437c94;
+    --current-body-color: var(--primary-light-body);
+    --current-bg-color: var(--primary-light-bg);
+    --current-text-color: var(--primary-light-text);
+}
+
+.Dark-Them {
+    --current-body-color: var(--primary-dark-body);
+    --current-bg-color: var(--primary-dark-bg);
+    --current-text-color: var(--primary-dark-text);
+}
+
+.Light-Them {
+    --current-body-color: var(--primary-light-body);
+    --current-bg-color: var(--primary-light-bg);
+    --current-text-color: var(--primary-light-text);
 }
 
 * {
@@ -18,11 +36,12 @@
 }
 
 body {
-    background-color: var(--primary-body-color);
+    background-color: var(--current-body-color);
     font-family: 'Comfortaa', cursive;
     font-size: 1rem;
     box-sizing: border-box;
     text-align: justify;
+    color: var(--current-text-color);
 }
 
 a {
@@ -34,8 +53,8 @@ a {
 /* Header Section*/
 
 header {
-    background-color: var(--primary-color-bg);
-    color: var(--primary-color-text);
+    background-color: var(--current-bg-color);
+    color: var(--current-text-color);
 }
 
 header nav {
@@ -84,7 +103,7 @@ header nav ul {
 .overlay {
     width: 100%;
     height: 65%;
-    background-color: var(--primary-color-bg);
+    background-color: var(--current-bg-color);
     position: fixed;
     top: -500px;
     left: 0;
@@ -131,8 +150,9 @@ header nav ul li:hover {
 .lineStyle {
     margin-top: 10px;
     width: 300px;
-    border-bottom: 65px solid var(--primary-color-bg);
+    border-bottom: 65px solid var(--current-bg-color);
     border-radius: 0 10% 10% 0;
+    position: relative;
 }
 
 main {
@@ -182,7 +202,7 @@ aside {
 
 #contact a {
     font-size: 4vw;
-    color: var(--primary-color-bg);
+    color: var(--current-bg-color);
     transition: ease-in-out 0.8s;
 }
 
@@ -216,14 +236,15 @@ textarea {
     /* Add a top margin */
     margin-bottom: 16px;
     /* Bottom margin */
-    resize: vertical/* Allow the user to vertically resize the textarea (not horizontally) */
+    resize: vertical
+    /* Allow the user to vertically resize the textarea (not horizontally) */
 }
 
 
 /* Style the submit button with a specific background color etc */
 
 input[type=submit] {
-    background-color: var(--primary-color-bg);
+    background-color: var(--current-bg-color);
     color: white;
     padding: 12px 20px;
     border: none;
@@ -300,12 +321,12 @@ input[type=submit]:hover {
 }
 
 footer {
-    background-color: var(--primary-color-bg);
+    background-color: var(--current-bg-color);
     width: 100%;
     position: relative;
     bottom: 0;
     text-align: center;
-    color: var(--primary-color-text);
+    color: var(--current-text-color);
     justify-content: space-around;
     align-items: flex-end;
     height: 100px;
@@ -321,7 +342,7 @@ footer h2 {
     position: fixed;
     bottom: 0;
     right: 1%;
-    color: var(--primary-color-bg);
+    color: var(--current-bg-color);
     font-size: 4vw;
     z-index: 999;
     transition: all ease-in-out 0.5s;
@@ -335,9 +356,9 @@ footer h2 {
     header nav {
         flex-direction: row;
     }
-    /* header nav ul {
-        display: none;
-    } */
+    header nav ul a {
+        font-size: 15px;
+    }
     header nav img {
         width: 20vw;
     }
@@ -381,19 +402,20 @@ footer h2 {
     #myNav {
         width: 100%;
         height: 65%;
-        background-color: var(--primary-color-bg);
+        background-color: var(--current-bg-color);
         position: fixed;
         top: -500px;
         left: 0;
         padding-top: 40px;
         transition: 1s;
+        z-index: 999;
     }
     .closeButton {
         display: inline;
     }
 }
 
-@media(max-width:1000px) and ( min-width:769px) {
+@media(max-width:1000px) and (min-width:769px) {
     #home,
     #contact {
         flex-direction: column;
@@ -401,6 +423,9 @@ footer h2 {
     #home img {
         width: 50vw;
         border-radius: 5%;
+    }
+    header nav ul a {
+        font-size: 18px;
     }
     .gridShow img {
         width: 92%;
@@ -410,4 +435,77 @@ footer h2 {
     .containerForm {
         width: 57vw;
     }
+}
+
+
+/* The switch - the box around the slider */
+
+.switch {
+    position: absolute;
+    top: 14px;
+    right: 2%;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+
+/* Hide default HTML checkbox */
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+
+/* The slider */
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(10, 0, 0);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: rgb(94, 38, 226);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #ffffff;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #ffffff;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+
+/* Rounded sliders */
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
 }
