@@ -3,7 +3,7 @@
     --primary-light-bg: #6593A6;
     --primary-light-body: rgb(233, 232, 232);
     --primary-dark-text: #fff;
-    --primary-dark-bg: #a9adaf;
+    --primary-dark-bg: #13516a;
     --primary-dark-body: #333;
     --secondary-color-text: #dfd;
     --secondary-color-bg: #00ff72;
@@ -77,6 +77,8 @@ header nav img {
     width: 160px;
     margin: 2vw;
     border-radius: 50%;
+    transition: all ease-in-out 500ms;
+    cursor: pointer;
 }
 
 header nav ul {
@@ -183,6 +185,8 @@ section aside img {
     width: 100%;
     height: 100%;
     border-radius: 2%;
+    transition: all ease-in-out 500ms;
+    cursor: pointer;
 }
 
 .summary {
@@ -288,7 +292,7 @@ input[type=submit]:hover {
     padding: 2%;
     border-radius: 5%;
     text-align: center;
-    background-color: #ccc;
+    background-color: var(--current-bg-color);
     box-shadow: 0 0 10px;
     margin: 2%;
     cursor: pointer;
@@ -296,7 +300,8 @@ input[type=submit]:hover {
 }
 
 .serviceBox:hover {
-    background-color: rgb(187, 179, 179);
+    background-color: var(--primary-hover-color);
+    color: var(--primary-dark-text);
     box-shadow: 0 0 10px inset;
 }
 
@@ -480,7 +485,7 @@ footer h2 {
     width: 26px;
     left: 4px;
     bottom: 4px;
-    background-color: rgb(94, 38, 226);
+    background-color: rgb(2, 114, 45);
     -webkit-transition: .4s;
     transition: .4s;
 }

@@ -21,6 +21,16 @@ const toggleThem = () => {
 }
 
 
+// -------------- Them Image Effects ----------- //
+
+const rotateImage = img => img.style = "transform: rotateZ( 360deg) scale(1.2); border-radius:50%";
+
+
+const de_rotateImage = img => {
+    img.style.transform = "";
+    img.style.borderRadius = "";
+}
+
 // ----------------- validation Section ----------------------//
 
 const disapleAll = () => {
