@@ -37,6 +37,10 @@
     margin: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .bodyStructure {
     display: flex;
     flex-direction: row;
