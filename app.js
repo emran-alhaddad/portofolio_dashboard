@@ -20,6 +20,14 @@ server.get('/', (req, res) => {
     readJSON(req, res);
 })
 
+server.get('/home', (req, res) => {
+    readJSON(req, res);
+})
+
+server.get('/index', (req, res) => {
+    readJSON(req, res);
+})
+
 
 async function readJSON(req, res) {
     await fs.readFile("Assets/json/skills.json", function(err, data) {
