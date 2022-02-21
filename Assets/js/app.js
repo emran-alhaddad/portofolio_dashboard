@@ -1,11 +1,13 @@
 // ----------------- Toogle Menue Section ----------------------//
 
 function openNav() {
-    document.getElementById("myNav").style.top = "0";
+    document.getElementById("myNav").style.top = "0%";
+    document.getElementById("myNav").style.left = "0%";
 }
 
 function closeNav() {
-    document.getElementById("myNav").style.top = "-500px";
+    document.getElementById("myNav").style.top = "-100%";
+    document.getElementById("myNav").style.left = "100%";
 }
 
 // ----------------- Themming Section ----------------------//
@@ -23,7 +25,7 @@ const toggleThem = () => {
 
 // -------------- Them Image Effects ----------- //
 
-const rotateImage = img => img.style = "transform: rotateZ( 360deg) scale(1.2); border-radius:50%";
+const rotateImage = img => img.style = "transform: rotateZ( 360deg) scale(1.1); border-radius:50%";
 
 
 const de_rotateImage = img => {

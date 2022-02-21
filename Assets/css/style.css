@@ -66,11 +66,16 @@ a {
 header {
     background-color: var(--current-bg-color);
     color: var(--current-text-color);
+    position: sticky;
+    top: 0;
+    z-index: 9999;
 }
 
 header nav {
     display: flex;
     flex-direction: column;
+    position: sticky;
+    top: 0;
 }
 
 header nav section {
@@ -94,14 +99,15 @@ header nav ul {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-content: center;
+    align-content: flex-end;
     justify-content: left;
 }
 
 .toggleMenuButton {
     display: none;
-    font-size: 10vw;
+    font-size: 7vw;
     padding-right: 7vw;
+    cursor: pointer;
 }
 
 .closeButton {
@@ -129,16 +135,42 @@ header nav ul {
 }
 
 header nav ul li {
-    margin: 30px 0;
+    margin: 20px 0;
     list-style-type: none;
     font-size: 21px;
-    padding-left: 20px;
+    padding: 10px 15px;
+    padding-left: 30px;
     transition: ease-in-out 300ms;
+    position: relative;
 }
 
 header nav ul li:hover {
-    color: var(--secondary-color-text);
     font-size: 22px;
+}
+
+header nav ul li::before {
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    padding: 10px 2px;
+}
+
+header nav ul li:hover::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+header nav ul li::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    inset: 0 0 0 0;
+    background: var(--current-body-color);
+    z-index: -1;
+    transition: transform .3s ease;
 }
 
 
@@ -168,6 +200,17 @@ header nav ul li:hover {
     position: relative;
 }
 
+.lineStyle::after {
+    content: " ";
+    background-color: var(--current-bg-color);
+    position: absolute;
+    right: -15px;
+    height: 64px;
+    z-index: -1;
+    width: 64px;
+    border-radius: 50%;
+}
+
 main {
     margin: 2% 5%;
     width: 90%;
@@ -178,21 +221,20 @@ main {
     text-decoration: underline;
     padding: 5px;
     padding-left: 0;
-    margin-bottom: 10px;
+    margin-bottom: 13px;
 }
 
 .card h5 {
     font-weight: lighter;
-    margin-bottom: 10px;
+    margin-top: 18px;
 }
 
 .card hr {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 section aside img {
     width: 100%;
-    height: 100%;
     border-radius: 2%;
     transition: all ease-in-out 500ms;
     cursor: pointer;
@@ -208,7 +250,7 @@ section aside img {
 }
 
 aside {
-    margin: 2% 5%;
+    margin: 2% 6%;
     width: 50%;
 }
 
@@ -356,14 +398,15 @@ footer h2 {
     position: fixed;
     bottom: 0;
     right: 1%;
-    color: var(--current-bg-color);
+    color: var(--current-text-color);
     font-size: 4vw;
     z-index: 999;
     transition: all ease-in-out 0.5s;
 }
 
 #buttonUp:hover {
-    transform: scale(1.5);
+    transform: scale(1.1);
+    margin-right: 1vw;
 }
 
 @media(max-width:768px) {
@@ -374,7 +417,7 @@ footer h2 {
         font-size: 15px;
     }
     header nav img {
-        width: 20vw;
+        width: 13vw;
     }
     .bodyStructure {
         flex-direction: column;
@@ -383,7 +426,7 @@ footer h2 {
         flex-direction: column;
     }
     .containerForm {
-        width: 81vw;
+        width: 75vw;
     }
     section aside img {
         width: 75vw;
@@ -418,11 +461,13 @@ footer h2 {
         height: 65%;
         background-color: var(--current-bg-color);
         position: fixed;
-        top: -500px;
-        left: 0;
+        top: -100%;
+        left: 100%;
         padding-top: 40px;
         transition: 1s;
         z-index: 999;
+        border-radius: 0px 0px 0px 33%;
+        box-shadow: 0 0 20px var(--current-body-color);
     }
     .closeButton {
         display: inline;
@@ -448,6 +493,11 @@ footer h2 {
     }
     .containerForm {
         width: 57vw;
+    }
+    #myNav {
+        border-radius: 0;
+        box-shadow: none;
+        top: 0;
     }
 }
 
@@ -482,7 +532,7 @@ footer h2 {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgb(10, 0, 0);
+    background-color: var(--current-body-color);
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -494,13 +544,13 @@ footer h2 {
     width: 26px;
     left: 4px;
     bottom: 4px;
-    background-color: rgb(2, 114, 45);
+    background-color: var(--current-text-color);
     -webkit-transition: .4s;
     transition: .4s;
 }
 
 input:checked+.slider {
-    background-color: #ffffff;
+    background-color: var(--current-body-color);
 }
 
 input:focus+.slider {
