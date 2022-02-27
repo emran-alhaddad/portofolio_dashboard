@@ -1,54 +1,35 @@
 const express = require('express');
 const server = express();
-const PORT = process.env.PORT || 5000;
+
+// Get All Routes in Handel 
+const userInfoRoute = require('./Routes/userInfoRoutes');
+const skillsRoute = require('./Routes/skillsRoutes');
+const experiencesRoute = require('./Routes/experiencesRoutes');
+const prevWorksRoute = require('./Routes/prevWorksRoutes');
+const servicesRoute = require('./Routes/servicesRoutes');
+const ordersRoute = require('./Routes/ordersRoutes');
+const contaciInfoRoute = require('./Routes/contactInfoRoutes');
+const loginRoute = require('./Routes/loginRoutes');
+const { isLogedIn, logOut } = require('./controller/loginController');
+
+
+// Server Configurations
+const PORT = process.env.PORT || 8000;
 server.set('view engine', 'ejs');
 server.use(express.static('Assets'));
-server.set('views', 'pages');
-const fs = require("fs");
-let skills = null;
-let experiences = null;
-let prev_works = null;
-let services = null;
-
-
-
-
+server.use(express.urlencoded({ extended: true }))
+server.use(express.json());
 server.listen(PORT, console.log(`Server started on port ${PORT}`));
 
 
-server.get('/', (req, res) => {
-    readJSON(req, res);
-})
-
-server.get('/home', (req, res) => {
-    readJSON(req, res);
-})
-
-server.get('/index', (req, res) => {
-    readJSON(req, res);
-})
-
-
-async function readJSON(req, res) {
-    await fs.readFile("Assets/json/skills.json", function(err, data) {
-        if (err) throw err;
-        skills = JSON.parse(data);
-    });
-
-    await fs.readFile("Assets/json/experiences.json", function(err, data) {
-        if (err) throw err;
-        experiences = JSON.parse(data);
-    });
-
-    await fs.readFile("Assets/json/prev-work.json", function(err, data) {
-        if (err) throw err;
-        prev_works = JSON.parse(data);
-    });
-
-    await fs.readFile("Assets/json/services.json", function(err, data) {
-        if (err) throw err;
-        services = JSON.parse(data);
-    });
-
-    res.render('home', { skills: skills, experiences: experiences, prev_works: prev_works, services: services });
-}
+// Works with Routes 
+server.use('/login', loginRoute);
+server.use('/logout', logOut);
+server.use(isLogedIn);
+server.use('/', userInfoRoute);
+server.use('/skills/', skillsRoute);
+server.use('/experiences/', experiencesRoute);
+server.use('/services/', servicesRoute);
+server.use('/prevWorks/', prevWorksRoute);
+server.use('/contact/', contaciInfoRoute);
+server.use('/orders/', ordersRoute);

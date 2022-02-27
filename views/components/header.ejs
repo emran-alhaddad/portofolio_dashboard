@@ -1,0 +1,40 @@
+<header id="top">
+    <nav>
+        <section>
+
+            <img id="logo" src="../uploads/<%= userInfo.avater %>" alt="MyImage" onmouseenter="rotateImage(this);" onmouseleave="de_rotateImage(this);">
+            <i class="bi bi-menu-button-wide-fill toggleMenuButton " onclick="openNav();"></i>
+        </section>
+        <div id="myNav">
+            <i class="bi bi-x-lg closeButton" onclick="closeNav()"></i>
+            <ul class="overlay-content">
+                <li class="bi bi-house-door">
+                    <a href="/">HOME</a>
+                </li>
+                <li class="bi bi-info-circle-fill">
+                    <a href="/skills">SKILLS</a>
+                </li>
+                <li class="bi bi-info-circle-fill">
+                    <a href="/experiences">EXPERIENCE</a>
+                </li>
+                <li class="bi bi-clock-history">
+                    <a href="/prevWorks">Prev Works</a>
+                </li>
+                <li class="bi bi-sliders">
+                    <a href="/services">SERVICES</a>
+                </li>
+                <li class="bi bi-person-lines-fill">
+                    <a href="/contact">CONTACT</a>
+                </li>
+
+                <li class="bi bi-person-lines-fill">
+                    <a href="/orders">ORDERS</a>
+                </li>
+
+                <li class="fas fa-sign-out-alt" style="font-weight: 600;">
+                    <a href="/logout" data-toggle="modal" data-target="#logoutModal">LOGOUT</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

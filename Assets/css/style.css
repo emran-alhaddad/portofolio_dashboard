@@ -37,6 +37,15 @@
     margin: 0;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--current-text-color);
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -58,6 +67,8 @@ body {
 a {
     text-decoration: none;
     color: inherit;
+    font-family: 'Comfortaa', cursive;
+    font-weight: 400;
 }
 
 
@@ -68,7 +79,7 @@ header {
     color: var(--current-text-color);
     position: sticky;
     top: 0;
-    z-index: 9999;
+    z-index: 999;
 }
 
 header nav {
@@ -99,8 +110,8 @@ header nav ul {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-content: flex-end;
     justify-content: left;
+    padding-left: 0;
 }
 
 .toggleMenuButton {
@@ -135,11 +146,11 @@ header nav ul {
 }
 
 header nav ul li {
-    margin: 20px 0;
+    margin: 10px 0;
     list-style-type: none;
     font-size: 21px;
     padding: 10px 15px;
-    padding-left: 30px;
+    padding-left: 45px;
     transition: ease-in-out 300ms;
     position: relative;
 }
@@ -157,6 +168,10 @@ header nav ul li::before {
 header nav ul li:hover::before {
     transform: scaleX(1);
     transform-origin: bottom left;
+    line-height: normal;
+    padding-top: 13px;
+    border-radius: 20px 0 0 20px;
+    padding-left: 10px;
 }
 
 header nav ul li::before {
@@ -181,6 +196,7 @@ header nav ul li::before {
     flex-direction: column;
     margin-bottom: 20px;
     ;
+    padding: 0;
 }
 
 
@@ -188,8 +204,10 @@ header nav ul li::before {
 
 .card {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding: 2%;
+    background-color: var(--current-body-color);
+    align-items: center;
 }
 
 .lineStyle {
@@ -214,6 +232,7 @@ header nav ul li::before {
 main {
     margin: 2% 5%;
     width: 90%;
+    height: 90%;
 }
 
 .card h1,
@@ -235,7 +254,7 @@ main {
 
 section aside img {
     width: 100%;
-    border-radius: 2%;
+    border-radius: 15%;
     transition: all ease-in-out 500ms;
     cursor: pointer;
 }
@@ -252,12 +271,17 @@ section aside img {
 aside {
     margin: 2% 6%;
     width: 50%;
+    height: 90%;
+}
+
+#home aside {
+    height: auto;
 }
 
 
 /* Contact Section  */
 
-#contact a {
+.socialMedia a {
     font-size: 4vw;
     color: var(--current-bg-color);
     transition: ease-in-out 0.8s;
@@ -267,7 +291,7 @@ aside {
     margin-bottom: 20px;
 }
 
-#contact a:hover {
+.socialMedia a:hover {
     transform: rotateZ(360deg) scale(1.5);
     color: var(--current-hover);
 }
@@ -413,6 +437,11 @@ footer h2 {
     header nav {
         flex-direction: row;
     }
+    header nav ul li {
+        margin: 10px 0;
+        width: 60%;
+        padding-left: 15%;
+    }
     header nav ul a {
         font-size: 15px;
     }
@@ -425,11 +454,7 @@ footer h2 {
     .card {
         flex-direction: column;
     }
-    .containerForm {
-        width: 75vw;
-    }
     section aside img {
-        width: 75vw;
         border-radius: 5%;
     }
     .gridShow {
@@ -471,6 +496,9 @@ footer h2 {
     }
     .closeButton {
         display: inline;
+    }
+    aside {
+        width: 90%;
     }
 }
 
@@ -581,4 +609,303 @@ input:checked+.slider:before {
 .inputSuccessLightThem {
     border-left: 5px solid;
     border-color: var(--border-focused-true);
+}
+
+.box-with-action {
+    position: relative;
+    transition: all ease-in-out .3s;
+}
+
+.box-action {
+    position: absolute;
+    bottom: 0%;
+    width: -webkit-fill-available;
+    height: 50%;
+    border-radius: 0 0 15% 15%;
+    background-color: #ffffffbf;
+    box-shadow: 0 0 4px inset;
+    display: flex;
+    flex-direction: row;
+    transition: all ease-in-out .3s;
+    align-items: center;
+}
+
+.box-action-show {
+    opacity: 1;
+    bottom: 0%;
+}
+
+.box-action-hide {
+    opacity: 0;
+    bottom: -50%;
+}
+
+#home,
+#summary {
+    position: relative;
+}
+
+.action-controls {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.close {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+    border: none;
+    background: none;
+    color: var(--current-text-color);
+}
+
+
+/*  Modals Section  */
+
+
+/* Confirm Modal */
+
+.deleteModal .modal-confirm {
+    color: #636363;
+    width: 400px;
+}
+
+.deleteModal .modal-confirm .modal-content {
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    font-size: 14px;
+}
+
+.deleteModal .modal-confirm .modal-header {
+    border-bottom: none;
+    position: relative;
+}
+
+.deleteModal .modal-confirm h4 {
+    text-align: center;
+    font-size: 26px;
+    margin: 30px 0 -10px;
+}
+
+.deleteModal .modal-confirm .close {
+    position: absolute;
+    top: -5px;
+    right: -2px;
+    border: none;
+    background: none;
+    color: var(--current-text-color);
+}
+
+.deleteModal .modal-confirm .modal-body {
+    color: #999;
+}
+
+.deleteModal .modal-confirm .modal-footer {
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 13px;
+    padding: 10px 15px 25px;
+}
+
+.deleteModal .modal-confirm .modal-footer a {
+    color: #999;
+}
+
+.deleteModal .modal-confirm .icon-box {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    border-radius: 50%;
+    z-index: 9;
+    text-align: center;
+    border: 3px solid #f15e5e;
+}
+
+.deleteModal .modal-confirm .icon-box i {
+    color: #f15e5e;
+    font-size: 46px;
+    display: inline-block;
+    margin-top: 13px;
+}
+
+.deleteModal .modal-confirm .btn,
+.deleteModal .modal-confirm .btn:active {
+    color: #fff;
+    border-radius: 4px;
+    background: #60c7c1;
+    text-decoration: none;
+    transition: all 0.4s;
+    line-height: normal;
+    min-width: 120px;
+    border: none;
+    min-height: 40px;
+    border-radius: 3px;
+    margin: 0 5px;
+}
+
+.deleteModal .modal-confirm .btn-secondary {
+    background: #c1c1c1;
+}
+
+.deleteModal .modal-confirm .btn-secondary:hover,
+.deleteModal .modal-confirm .btn-secondary:focus {
+    background: #a8a8a8;
+}
+
+.deleteModal .modal-confirm .btn-danger {
+    background: #f15e5e;
+}
+
+.deleteModal .modal-confirm .btn-danger:hover,
+.deleteModal .modal-confirm .btn-danger:focus {
+    background: #ee3535;
+}
+
+.deleteModal .trigger-btn {
+    display: inline-block;
+    margin: 100px auto;
+}
+
+
+/*  Done Modal */
+
+.DoneModal .modal-confirm {
+    color: #636363;
+    width: 325px;
+    font-size: 14px;
+}
+
+.DoneModal .modal-confirm .modal-content {
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+}
+
+.DoneModal .modal-confirm .modal-header {
+    border-bottom: none;
+    position: relative;
+}
+
+.DoneModal .modal-confirm h4 {
+    text-align: center;
+    font-size: 26px;
+    margin: 30px 0 -15px;
+}
+
+.DoneModal .modal-confirm .form-control,
+.modal-confirm .btn {
+    min-height: 40px;
+    border-radius: 3px;
+}
+
+.DoneModal .modal-confirm .close {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+
+.DoneModal .modal-confirm .modal-footer {
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+.DoneModal .modal-confirm .icon-box {
+    color: #fff;
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: -70px;
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    z-index: 9;
+    background: var(--current-bg-color);
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.DoneModal .modal-confirm .icon-box i {
+    font-size: 58px;
+    position: relative;
+    top: 3px;
+}
+
+.DoneModal .modal-confirm.modal-dialog {
+    margin-top: 80px;
+}
+
+.DoneModal .modal-confirm .btn {
+    color: #fff;
+    border-radius: 4px;
+    background: var(--current-bg-color);
+    text-decoration: none;
+    transition: all 0.4s;
+    line-height: normal;
+    border: none;
+    width: 100%;
+}
+
+.DoneModal .modal-confirm .btn:hover,
+.modal-confirm .btn:focus {
+    background: #6fb32b;
+    outline: none;
+}
+
+.DoneModal .trigger-btn {
+    display: inline-block;
+    margin: 100px auto;
+}
+
+.modal-content {
+    background-color: var(--current-body-color);
+}
+
+.curr-bg {
+    background-color: var(--current-bg-color);
+}
+
+.curr-text {
+    color: var(--current-text-color);
+}
+
+.curr-body {
+    background-color: var(--current-body-color);
+}
+
+.float-right {
+    float: right;
+}
+
+a:hover {
+    color: var(--current-text-color);
+}
+
+.dropdown-toggle::after {
+    content: none;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+    color: #185bb5;
+    background-color: #00000024;
+    border-radius: 20px;
+}
+
+.custom-margin {
+    margin-left: -150px;
+}
+
+.modal-dialog {
+    max-width: 50%;
 }

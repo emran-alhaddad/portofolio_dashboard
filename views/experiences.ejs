@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./components/head.ejs');  %>
+
+    <body onload="disapleAll();">
+        <div class="bodyStructure">
+            <%- include('./components/header.ejs');  %>
+
+                <div class="container">
+                    <%- include('./components/thembtn.ejs');  %>
+
+                        <section id="about" class="card flex-column">
+                            <main>
+                                <div class="position-relative">
+                                    <h1>Experiences</h1>
+                                    <div class="dropdown no-arrow mx-1 position-absolute" style="top:10px; right: 10px;">
+                                        <a role="button" class="curr-text dropdown-toggle" id="optionsMenue" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v" style="font-size: 1.5em;"></i></a>
+                                        <ul class="dropdown-list dropdown-menu shadow animated--grow-in custom-margin" aria-labelledby="optionsMenue" style="right: 0;">
+                                            <li class="p-2">
+                                                <a class="dropdown-item" role="button" data-toggle="modal" data-target="#addExperience">
+                                                    <i class="fas fa-plus text-secondary"></i>
+                                                    <span class="d-inline-block"> Add</span>
+                                                </a>
+                                            </li>
+                                            <li class="p-2">
+                                                <a class="dropdown-item" role="button" data-toggle="modal" data-target="#deleteAllExperiences">
+                                                    <i class="far fa-trash-alt text-danger"></i>
+                                                    <span class="d-inline-block"> Delete</span>
+                                                </a>
+                                            </li>
+
+                                            <li class="p-2">
+                                                <a class="dropdown-item" role="button" data-toggle="modal" data-target="#showTrashedExperiences">
+                                                    <i class="far fa-trash text-primary"></i>
+                                                    <span class="d-inline-block"> Trash</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <ul>
+                                    <% for(const experience in experiences)
+                                if (Object.hasOwnProperty.call(experiences, experience)) {
+                                %>
+                                        <li class="d-flex flex-row gap-3">
+                                            <div style="flex: 1;">
+                                                <h4 class="small font-weight-bold curr-text">
+                                                    <%= experiences[experience].title; %> <span class="float-right"><%= experiences[experience].precentage; %>%</span></h4>
+                                                <div class="progress mb-4">
+                                                    <div class="progress-bar curr-bg" role="progressbar" style="width:<%= experiences[experience].precentage; %>%;" aria-valuenow="
+                                                        <%= experiences[experience].precentage; %>" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                            <div><i class="far fa-edit text-primary" role="button" data-toggle="modal" data-target="#editExperience" onclick="linkEditExperience('<%= experiences[experience]._id %>','<%= experiences[experience].title %>','<%= experiences[experience].precentage %>');"></i>
+                                                <i class="far fa-trash-alt text-danger" role="button" data-toggle="modal" data-target="#deleteExperience" onclick="linkDeleteID('<%= experiences[experience]._id; %>');"></i>
+                                            </div>
+
+
+                                        </li>
+                                        <% } %>
+                                </ul>
+
+                            </main>
+                        </section>
+                </div>
+        </div>
+        <%- include('./components/footer.ejs');  %>
+            <%- include('./formModels/experiences.ejs');  %>
+                <%- include('./components/links.ejs');  %>
+                    <script>
+                        function linkDeleteID(id) {
+                            document.getElementById('deleteExperienceID').value = id;
+                            console.log(id);
+                        }
+
+                        function linkTrashID(id) {
+                            document.getElementById('undoExperienceID').value = id;
+                            console.log(id);
+                        }
+
+
+                        function linkEditExperience(id, name, precentage) {
+                            document.getElementById('editExperienceID').value = id;
+                            document.getElementById('editExperienceName').value = name;
+                            document.getElementById('editExperiencePrecentage').value = precentage;
+                            console.log(id, name, precentage);
+                        }
+                    </script>
+    </body>
+
+
+</html>

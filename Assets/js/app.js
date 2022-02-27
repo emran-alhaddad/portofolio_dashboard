@@ -102,3 +102,22 @@ const validateMSG = msg => {
         enableItems(['fname', 'email', 'service']);
     }
 }
+
+
+// ----------------- dashboard section
+
+
+
+const toggleBoxAction = id => {
+    var box = document.getElementById(id);
+    if (box.classList.contains("box-action-show")) {
+        box.classList.remove('box-action-show');
+        box.classList.add('box-action-hide');
+        box.parentNode.style = "transform:scale(1);"
+    } else if (box.classList.contains("box-action-hide")) {
+        box.classList.remove('box-action-hide');
+        box.classList.add('box-action-show');
+        box.parentNode.style = "transform:scale(1.1);"
+    }
+
+}

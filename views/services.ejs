@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./components/head.ejs');  %>
+
+    <body onload="disapleAll();">
+        <div class="bodyStructure">
+            <%- include('./components/header.ejs');  %>
+
+                <div class="container">
+                    <%- include('./components/thembtn.ejs');  %>
+
+                        <section id="services" class="card">
+                            <main>
+                                <div class="position-relative">
+                                    <h1>My Services</h1>
+                                    <div class="dropdown no-arrow mx-1 position-absolute" style="top:10px; right: 10px;">
+                                        <a role="button" class="curr-text dropdown-toggle" id="optionsMenue" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v" style="font-size: 1.5em;"></i></a>
+                                        <ul class="dropdown-list dropdown-menu shadow animated--grow-in custom-margin" aria-labelledby="optionsMenue" style="right: 0;">
+                                            <li class="p-2">
+                                                <a class="dropdown-item" role="button" data-toggle="modal" data-target="#addService">
+                                                    <i class="fas fa-plus text-secondary"></i>
+                                                    <span class="d-inline-block"> Add</span>
+                                                </a>
+                                            </li>
+                                            <li class="p-2">
+                                                <a class="dropdown-item" role="button" data-toggle="modal" data-target="#deleteModal">
+                                                    <i class="far fa-trash-alt text-danger"></i>
+                                                    <span class="d-inline-block"> Delete</span>
+                                                </a>
+                                            </li>
+                                            <li class="p-2">
+                                                <a class="dropdown-item" role="button" data-toggle="modal" data-target="#showTrashedServices">
+                                                    <i class="fa fa-solid fa-trash-can-undo text-primary"></i>
+                                                    <span class="d-inline-block"> Trash</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="wrapper">
+
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="">
+                                                <div class="fresh-table table w-100">
+                                                    <table id="fresh-table" class="table" style="color: var(--current-text-color);">
+                                                        <thead>
+                                                            <th>Image</th>
+                                                            <th>Name</th>
+                                                            <th>Description</th>
+                                                            <th>State</th>
+                                                            <th>Actions</th>
+                                                        </thead>
+
+                                                        <tbody>
+                                                            <% for(const service in services)
+                                                        if (Object.hasOwnProperty.call(services, service)) { %>
+                                                                <tr>
+                                                                    <td>
+                                                                        <img style="width: 50px; height: 50px;" src="/uploads/services/<%= services[service].image %>" alt="">
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= services[service].title %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= services[service].description %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <% if(services[service].state==1) { %>
+                                                                            <i class="fa fa-solid fa-eye"></i>
+                                                                            <%} else { %>
+                                                                                <i class="fa fa-solid fa-eye-slash"></i>
+                                                                                <% } %>
+
+                                                                    </td>
+                                                                    <td>
+                                                                        <div><i class="far fa-edit text-primary" role="button" data-toggle="modal" data-target="#editService" onclick="linkEditService('<%= services[service]._id %>','<%= services[service].title %>','<%= services[service].description %>');"></i>
+                                                                            <i class="far fa-trash-alt text-danger" role="button" data-toggle="modal" data-target="#deleteService" onclick="linkDeleteID('<%= services[service]._id; %>');"></i>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <% } %>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </main>
+
+                        </section>
+                </div>
+        </div>
+        <%- include('./components/footer.ejs');  %>
+            <%- include('./formModels/services.ejs');  %>
+                <%- include('./components/links.ejs');  %>
+                    <script>
+                        function linkDeleteID(id) {
+                            document.getElementById('deleteServiceID').value = id;
+                            console.log(id);
+                        }
+
+                        function linkTrashID(id) {
+                            document.getElementById('undoServiceID').value = id;
+                            console.log(id);
+                        }
+
+
+                        function linkEditService(id, name, description) {
+                            document.getElementById('editServiceID').value = id;
+                            document.getElementById('editServiceName').value = name;
+                            document.getElementById('editServiceDescription').value = description;
+                            console.log(id, name, precentage);
+                        }
+                    </script>
+    </body>
+
+
+</html>

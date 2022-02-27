@@ -1,0 +1,83 @@
+<!-- Done Modal -->
+<div id="DoneModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h4 class="modal-title w-100">Operation Done</h4>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Skill Module -->
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header flex-column">
+                <div class="icon-box">
+                    <i class="fas fa-trash-alt"></i>
+                </div>
+                <h4 class="modal-title w-100">Are you sure?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Do you really want to delete these records? This process cannot be undone.</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#DoneModal">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- change Password Module  -->
+
+<div class="modal fade show" id="changePassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+        <div class="modal-content p-3">
+            <div class="modal-header">
+                <h4 class="modal-title fw-bold text-center" id="exampleModalLabel">Change Password</h4>
+                <a href="#" data-dismiss="modal">
+                    <i class="far fa-window-close text-danger" style="font-size: 2em;"></i>
+                </a>
+
+            </div>
+            <div class="modal-body">
+                <form>
+                    <!-- Form Group (current password)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="currentPassword">Current Password</label>
+                        <input class="form-control" id="currentPassword" name="currentPassword" type="password" placeholder="Enter current password">
+                    </div>
+                    <!-- Form Group (new password)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="newPassword">New Password</label>
+                        <input class="form-control" id="newPassword" name="newPassword" type="password" placeholder="Enter new password">
+                    </div>
+                    <!-- Form Group (confirm password)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="confirmPassword">Confirm Password</label>
+                        <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm new password">
+                    </div>
+                    <button class="btn btn-primary" type="button">Save</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" data-dismiss="modal" data-toggle="modal" data-target="#DoneModal">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
