@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../../Assets/components/Admin/head.ejs');  %>
+
+    <body onload="disapleAll();">
+        <div class="bodyStructure">
+            <%- include('../../Assets/components/Admin/header.ejs');  %>
+
+                <div class="container">
+                    <%- include('../../Assets/components/Admin/thembtn.ejs');  %>
+
+                        <section id="about" class="card flex-column">
+                            <main>
+                                <div class="position-relative">
+                                    <h1>Skills</h1>
+                                    <div class="dropdown no-arrow mx-1 position-absolute" style="top:10px; right: 10px;">
+                                        <a role="button" class="curr-text dropdown-toggle" id="optionsMenue" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v" style="font-size: 1.5em;"></i></a>
+                                        <ul class="dropdown-list dropdown-menu shadow animated--grow-in custom-margin" aria-labelledby="optionsMenue" style="right: 0;">
+                                            <li class="p-2">
+                                                <a class="dropdown-item" role="button" data-toggle="modal" data-target="#addSkill">
+                                                    <i class="fas fa-plus text-secondary"></i>
+                                                    <span class="d-inline-block"> Add</span>
+                                                </a>
+                                            </li>
+                                            <li class="p-2">
+                                                <a class="dropdown-item" role="button" data-toggle="modal" data-target="#deleteAllSkills">
+                                                    <i class="far fa-trash-alt text-danger"></i>
+                                                    <span class="d-inline-block"> Delete</span>
+                                                </a>
+                                            </li>
+
+                                            <li class="p-2">
+                                                <a class="dropdown-item" role="button" data-toggle="modal" data-target="#showTrashedSkills">
+                                                    <i class="fa fa-solid fa-trash-can-undo text-primary"></i>
+                                                    <span class="d-inline-block"> Trash</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <ul>
+                                    <% for(const skill in skills)
+                                if (Object.hasOwnProperty.call(skills, skill)) {
+                                %>
+                                        <li class="d-flex flex-row gap-3">
+                                            <div style="flex: 1;">
+                                                <h4 class="small font-weight-bold curr-text">
+                                                    <%= skills[skill].title; %> <span class="float-right"><%= skills[skill].precentage; %>%</span></h4>
+                                                <div class="progress mb-4">
+                                                    <div class="progress-bar curr-bg" role="progressbar" style="width:<%= skills[skill].precentage; %>%;" aria-valuenow="
+                                                        <%= skills[skill].precentage; %>" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                            <div><i class="far fa-edit text-primary" role="button" data-toggle="modal" data-target="#editSkill" onclick="linkEditSkill('<%= skills[skill]._id %>','<%= skills[skill].title %>','<%= skills[skill].precentage %>');"></i>
+                                                <i class="far fa-trash-alt text-danger" role="button" data-toggle="modal" data-target="#deleteSkill" onclick="linkDeleteID('<%= skills[skill]._id; %>');"></i>
+                                            </div>
+                                        </li>
+                                        <% } %>
+                                </ul>
+
+                            </main>
+                        </section>
+                </div>
+        </div>
+        <%- include('../../Assets/components/Admin/footer.ejs');  %>
+            <%- include('../../Assets/components/formModels/skills.ejs');  %>
+                <%- include('../../Assets/components/Admin/links.ejs');  %>
+                    <script>
+                        function linkDeleteID(id) {
+                            document.getElementById('deleteSkillID').value = id;
+                            console.log(id);
+                        }
+
+                        function linkTrashID(id) {
+                            document.getElementById('undoSkillID').value = id;
+                            console.log(id);
+                        }
+
+
+                        function linkEditSkill(id, name, precentage) {
+                            document.getElementById('editSkillID').value = id;
+                            document.getElementById('editSkillName').value = name;
+                            document.getElementById('editSkillPrecentage').value = precentage;
+                            console.log(id, name, precentage);
+                        }
+                    </script>
+    </body>
+
+
+</html>

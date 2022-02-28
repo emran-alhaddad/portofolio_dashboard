@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../../Assets/components/User//head.ejs');  %>
+
+    <body onload="disapleAll();">
+        <div class="bodyStructure">
+            <%- include('../../Assets/components/User//header.ejs');  %>
+
+                <div class="container">
+                    <div class="lineStyle" style="position: sticky; top: 0; z-index: 10;">
+                        <!-- Rounded switch -->
+                        <label class="switch">
+                    <input type="checkbox" onchange="toggleThem()">
+                    <span class="slider round"></span>
+                </label>
+                    </div>
+                    <section id="home" class="card">
+                        <main>
+                            <h1>Personal Info</h1>
+                            <h3>Full Name:</h3>
+                            <h5>
+                                <%= userInfo.fullName %>
+                            </h5>
+                            <hr>
+                            <h3>Birth date:</h3>
+                            <h5>
+                                <%= userInfo.DOB %>
+                            </h5>
+                            <hr>
+                            <h3>Material Status:</h3>
+                            <h5>
+                                <%= userInfo.material_Status %>
+                            </h5>
+                            <hr>
+                        </main>
+
+                        <aside>
+                            <img src="/uploads/<%= userInfo.avater %>" alt="MyImage" onmouseenter="rotateImage(this);" onmouseleave="de_rotateImage(this);">
+                        </aside>
+                    </section>
+                    <hr>
+                    <div class="summary">
+                        <h1>Summary</h1>
+                        <p>
+                            <%= userInfo.summary %>
+                        </p>
+                    </div>
+                    <div class="lineStyle"></div>
+                    <section id="about" class="card">
+                        <main>
+                            <h1>Skills</h1>
+                            <ul>
+                                <% for(const skill in skills)
+                                if (Object.hasOwnProperty.call(skills, skill)) {
+                                 if(skills[skill].state==1) { %>
+                                    <li class="d-flex flex-row gap-3">
+                                        <div style="flex: 1;">
+                                            <h4 class="small font-weight-bold curr-text">
+                                                <%= skills[skill].title; %> <span class="float-right"><%= skills[skill].precentage; %>%</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar curr-bg" role="progressbar" style="width:<%= skills[skill].precentage; %>%;" aria-valuenow="
+                                                        <%= skills[skill].precentage; %>" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <% } }%>
+                            </ul>
+
+                        </main>
+                        <aside>
+                            <h1>Experience</h1>
+                            <ul>
+                                <% for(const exp in experiences)
+                                if (Object.hasOwnProperty.call(experiences, exp)) {
+                                    if(experiences[exp].state==1) { %>
+                                    <li class="d-flex flex-row gap-3">
+                                        <div style="flex: 1;">
+                                            <h4 class="small font-weight-bold curr-text">
+                                                <%= experiences[exp].title; %> <span class="float-right"><%= experiences[exp].precentage; %>%</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar curr-bg" role="progressbar" style="width:<%= experiences[exp].precentage; %>%;" aria-valuenow="
+                                                        <%= experiences[exp].precentage; %>" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <% } } %>
+                            </ul>
+
+                        </aside>
+                    </section>
+                    <div class="lineStyle"></div>
+                    <section id="prev" class="card">
+                        <main>
+                            <h1>Previous Works</h1>
+                            <div class="gridShow">
+                                <% for(const work in prevWorks)
+                                if (Object.hasOwnProperty.call(prevWorks, work)) {
+                                    if(prevWorks[work].state==1) { %>
+
+                                    <img src="/uploads/prevWorks/<%= prevWorks[work].image %>" alt="prev work">
+
+                                    <% } }%>
+                            </div>
+                        </main>
+
+                        <div>
+
+                        </div>
+                    </section>
+
+                    <div class="lineStyle"></div>
+                    <section id="services" class="card">
+                        <main>
+                            <h1>My Services</h1>
+                            <div class="gridShow">
+                                <% for(const service in services)
+                                if (Object.hasOwnProperty.call(services, service)) {
+                                if(services[service].state==1) { %>
+
+                                    <div class="serviceBox">
+                                        <img src="/uploads/services/<%= services[service].image %>" alt="service">
+                                        <h3>
+                                            <%= services[service].title; %>
+                                        </h3>
+                                        <p>
+                                            <%= services[service].description; %>
+                                        </p>
+                                    </div>
+
+                                    <% } } %>
+
+                            </div>
+                        </main>
+
+                    </section>
+
+                    <div class="lineStyle"></div>
+                    <section id="contact" class="card">
+                        <main>
+                            <h1>Contact Informations</h1>
+                            <h3>Address:</h3>
+                            <h5> <i class="bi bi-geo-alt-fill"></i> Saber mountain – Taiz - Yemen</h5>
+                            <hr>
+                            <h3>Phone:</h3>
+                            <h5><i class="bi bi-telephone-inbound-fill"></i> +967 770-774-255</h5>
+                            <hr>
+                            <h3>Email:</h3>
+                            <h5>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-check-fill" viewBox="0 0 16 16">
+                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 4.697v4.974A4.491 4.491 0 0 0 12.5 8a4.49 4.49 0 0 0-1.965.45l-.338-.207L16 4.697Z"/>
+                            <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-1.993-1.679a.5.5 0 0 0-.686.172l-1.17 1.95-.547-.547a.5.5 0 0 0-.708.708l.774.773a.75.75 0 0 0 1.174-.144l1.335-2.226a.5.5 0 0 0-.172-.686Z"/>
+                          </svg> alhaddademran@gmail.com
+                            </h5>
+                            <hr>
+                            <h3> Social Media </h3>
+                            <h5 class="socialMedia">
+                                <a href="https://wa.me/967770774255" class="bi bi-whatsapp">
+                                </a>
+                                <a href="https://t.me/EngEmran" class="bi bi-telegram">
+                                </a>
+                                <a href="https://www.youtube.com/channel/UCLNmKlNALbRXGQwnqxaYP3w" class="bi bi-youtube">
+                                </a>
+                                <a href="https://www.facebook.com/profile.php?id=100007355978197" class="bi bi-facebook">
+                                </a>
+                                <a href="https://www.facebook.com/profile.php?id=100007355978197" class="bi bi-instagram">
+                                </a>
+                                <a href="https://github.com/EmranCo" class="bi bi-github">
+                                </a>
+                                <a href="https://www.linkedin.com/in/emran-alhaddad-859523225/" class="bi bi-linkedin">
+                                </a>
+                            </h5>
+                            <hr>
+
+
+
+                        </main>
+                        <aside>
+                            <div class="containerForm">
+                                <form action="mailto:alhaddademran@gmail.com">
+
+                                    <label for="fname">Name</label>
+                                    <input class="styled" onkeyup="validateName(this);" type="text" id="fname" name="firstname" placeholder="Your name..">
+
+                                    <label for="email">Email</label>
+                                    <input class="input styled" onkeyup="validateEmail(this);" type="email" id="email" name="email" placeholder="Your Email..">
+
+                                    <label for="service">Service</label>
+                                    <select class="input styled" id="service" name="service">
+                            <option value="android">Android</option>
+                            <option value="frontend">Frontend</option>
+                            <option value="backend">Backend</option>
+                            <option value="fullstack">FullStack</option>
+                          </select>
+
+                                    <label for="subject">Subject</label>
+                                    <textarea class="input styled" onkeyup="validateMSG(this);" id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+                                    <input class="input" type="submit" id="submit" value="Submit">
+
+                                </form>
+                            </div>
+
+                        </aside>
+                    </section>
+                </div>
+        </div>
+        <%- include('../../Assets/components/User//footer.ejs');  %>
+
+            <a href="#top" id="buttonUp"> <i class="bi bi-arrow-up-circle-fill"></i></a>
+
+
+            <%- include('../../Assets/components/User//links.ejs');  %>
+    </body>
+
+
+</html>

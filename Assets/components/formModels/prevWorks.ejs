@@ -1,0 +1,279 @@
+<!-- Add New PrevWork Module  -->
+<div class="modal fade show" id="addPrevWork" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+        <div class="modal-content p-3">
+            <form method="post" action="/dashboard/prevWorks/add" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h4 class="modal-title fw-bold text-center" id="exampleModalLabel">Add New PrevWork</h4>
+                    <a href="#" data-dismiss="modal">
+                        <i class="far fa-window-close text-danger" style="font-size: 2em;"></i>
+                    </a>
+                </div>
+                <div class="modal-body pb-0">
+
+                    <!-- Form Group (PrevWork Name)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="title">PrevWork Name </label>
+                        <input name="title" class="form-control" id="title" type="text" placeholder="Enter your prevWork name" required>
+                    </div>
+
+                    <!-- Form Group (PrevWork Image)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="image">PrevWork Image </label>
+                        <input name="image" class="form-control" id="image" type="file" required>
+                    </div>
+
+
+                    <div class="row gx-3 mb-3">
+                        <!-- Form Group (PrevWork Description)-->
+                        <div class="col-md-12">
+                            <label class="small mb-1" for="description">Description</label>
+                            <textarea class="form-control" name="description" id="description" required cols="30" rows="5" style="resize: none;">
+                                
+                            </textarea>
+
+                        </div>
+                    </div>
+
+                    <!-- Form Group (PrevWork LiveDemo)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="title">PrevWork Live Demo </label>
+                        <input name="liveDemo" class="form-control" id="liveDemo" type="text" placeholder="Enter your LiveDemo Link" required>
+                    </div>
+
+                    <!-- Form Group (PrevWork State)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="state">PrevWork State </label>
+                        <select class="form-control" name="state" id="state" required>
+                            <option value="1" selected>Visible</option>
+                            <option value="0">Hidden</option>
+                        </select>
+                    </div>
+
+
+                    <!-- Save changes button-->
+
+                </div>
+                <div class="modal-footer pt-0">
+                    <input type="submit" value="Save" class="btn curr-bg curr-text">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Edit PrevWork Module  -->
+<div class="modal fade show" id="editPrevWork" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+        <div class="modal-content p-3">
+            <form method="post" action="/dashboard/prevWorks/edit" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h4 class="modal-title fw-bold text-center" id="exampleModalLabel">Edit PrevWork</h4>
+                    <a href="#" data-dismiss="modal">
+                        <i class="far fa-window-close text-danger" style="font-size: 2em;"></i>
+                    </a>
+                    <input type="hidden" id="editPrevWorkID" name="_id" value="">
+                </div>
+                <div class="modal-body pb-0">
+
+                    <!-- Form Group (PrevWork Name)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="title">PrevWork Name </label>
+                        <input name="title" class="form-control" id="editPrevWorkName" type="text" placeholder="Enter your prevWork name" value="" required>
+                    </div>
+
+
+                    <!-- Form Group (PrevWork Image)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="image">PrevWork Image </label>
+                        <input name="image" class="form-control" id="image" type="file">
+                    </div>
+
+                    <div class="row gx-3 mb-3">
+                        <!-- Form Group (PrevWork Description)-->
+                        <div class="col-md-12">
+                            <label class="small mb-1" for="description">Description</label>
+                            <textarea class="form-control" name="description" id="editPrevWorkDescription" required cols="30" rows="5" style="resize: none;">
+                                
+                            </textarea>
+
+                        </div>
+                    </div>
+
+                    <!-- Form Group (PrevWork LiveDemo)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="title">PrevWork Live Demo </label>
+                        <input name="liveDemo" class="form-control" id="editLiveDemo" type="text" placeholder="Enter your LiveDemo Link" required>
+                    </div>
+
+
+                    <!-- Form Group (PrevWork State)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="editPrevWorkstate">PrevWork State </label>
+                        <select class="form-control" name="state" id="editPrevWorkstate" required>
+                            <option value="1" selected>Visible</option>
+                            <option value="0">Hidden</option>
+                        </select>
+                    </div>
+
+                    <!-- Save changes button-->
+
+                </div>
+                <div class="modal-footer pt-0">
+                    <input type="submit" value="Save" class="btn curr-bg curr-text">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Delete prevWork Module -->
+
+<div id="deletePrevWork" class="modal fade deleteModal">
+    <form action="/dashboard/prevWorks/delete" method="post">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <div class="icon-box">
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                    <h4 class="modal-title w-100">Are you sure?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to delete this PrevWork ? This process cannot be undone.</p>
+                </div>
+                <input type="hidden" name="_id" value="" id="deletePrevWorkID">
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Delete All PrevWorks Module -->
+
+<div id="deleteAllPrevWorks" class="modal fade deleteModal">
+    <form action="/dashboard/prevWorks/delete_all" method="post">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <div class="icon-box">
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                    <h4 class="modal-title w-100">Are you sure?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to delete All PrevWorks ? This process cannot be undone.</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Show PrevWorks Trash Module  -->
+<div class="modal fade show" id="showTrashedPrevWorks" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+    <div style="max-width: 90%;" class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg ">
+        <div class="modal-content p-3">
+            <form method="post" action="" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h4 class="modal-title fw-bold text-center" id="exampleModalLabel">PrevWorks Recycle bin</h4>
+                    <a href="#" data-dismiss="modal">
+                        <i class="far fa-window-close text-danger" style="font-size: 2em;"></i>
+                    </a>
+                </div>
+                <div class="modal-body">
+
+                    <div class="wrapper">
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="">
+                                    <div class="fresh-table table w-100">
+                                        <table id="fresh-table" class="table" style="color: var(--current-text-color);">
+                                            <thead>
+                                                <th>Image</th>
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                                <th>Live Demo</th>
+                                                <th>State</th>
+                                                <th>Actions</th>
+                                            </thead>
+
+                                            <tbody>
+                                                <% for(const trash in Trash)
+                                                if (Object.hasOwnProperty.call(Trash, trash)) {
+                                                %>
+                                                    <tr>
+                                                        <td>
+                                                            <img src="/uploads/dashboard/prevWorks/<%= Trash[trash].image; %>" style="width: 50px;" alt="">
+                                                        </td>
+                                                        <td>
+                                                            <%= Trash[trash].title; %>
+                                                        </td>
+                                                        <td>
+                                                            <%= Trash[trash].description; %>
+                                                        </td>
+                                                        <td>
+                                                            <a href="<%= Trash[trash].liveDemo; %>">
+                                                                <%= Trash[trash].liveDemo %>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <i class="fa fa-solid fa-eye-slash"></i>
+                                                        </td>
+                                                        <td>
+                                                            <i class="fa fa-solid fa-trash-undo text-outline-primary" role="button" data-toggle="modal" data-target="#restorePrevWork" onclick="linkTrashID('<%= Trash[trash]._id; %>');"> Restore</i>
+                                                        </td>
+                                                    </tr>
+                                                    <% } %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Save changes button-->
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Restore prevWork Module -->
+
+<div id="restorePrevWork" class="modal fade deleteModal">
+    <form action="/dashboard/prevWorks/undo" method="post">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <div class="icon-box">
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                    <h4 class="modal-title w-100">Restore Selected PrevWork </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to Restore this PrevWork ? </p>
+                </div>
+                <input type="hidden" name="_id" value="" id="undoPrevWorkID">
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Restore</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
