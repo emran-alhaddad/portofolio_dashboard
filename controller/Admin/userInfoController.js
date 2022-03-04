@@ -2,11 +2,14 @@ var formidable = require('formidable');
 const fs = require('fs');
 const userInfo = require('../../model/userInfoModel');
 const getFileInfo = require('../../getFile');
+const userThem = require('../../model/systemUtils')
 
 const showUserInfo = (req, res) => {
     userInfo.findOne({}, (err, data) => {
         if (err) console.log(err);
-        res.render('./dashboardView/home', { userInfo: data });
+        userThem.find({}, (themErr, themData) => {
+            res.render('./dashboardView/home', { userInfo: data, adminThem: themData[0].adminThem });
+        });
     })
 
 };
@@ -41,7 +44,6 @@ const editUserImage = (req, res) => {
                     console.log(new Date().toLocaleString(), "Avater Updated Success")
                 });
 
-                res.redirect('/dashboard/');
             } else
                 res.write(`
                 <script>
@@ -52,12 +54,6 @@ const editUserImage = (req, res) => {
         }
 
 
-        // res.write(`
-        // <script>
-        // $("#doneEditUserInfo").modal('show');
-        // </script>
-        // `);
-        // res.end();
 
 
     });
@@ -80,7 +76,7 @@ const deleteUserImage = (req, res) => {
             console.log(new Date().toLocaleString(), "Avater Deleted Success")
         });
     });
-    res.redirect('/dashboard/');
+
 
 }
 

@@ -2,7 +2,7 @@
 <div class="modal fade show" id="addSkill" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
         <div class="modal-content p-3">
-            <form method="post" action="/dashboard/skills/add" enctype="multipart/form-data">
+            <form method="post" action="/dashboard/skills/add" onsubmit="$('#addSkill').modal('hide'); $('#doneSkill').modal('show');" enctype="multipart/form-data">
                 <div class="modal-header">
                     <h4 class="modal-title fw-bold text-center" id="exampleModalLabel">Add New Skill</h4>
                     <a href="#" data-dismiss="modal">
@@ -51,7 +51,7 @@
 </div>
 
 <!-- Edit Skill Module  -->
-<div class="modal fade show" id="editSkill" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+<div class="modal fade show" id="editSkill" tabindex="-1" onsubmit="$('#doneSkill').modal('show'); $('#editSkill').modal('hide'); " aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
         <div class="modal-content p-3">
             <form method="post" action="/dashboard/skills/edit" enctype="multipart/form-data">
@@ -106,7 +106,7 @@
 <!-- Delete skill Module -->
 
 <div id="deleteSkill" class="modal fade deleteModal">
-    <form action="/dashboard/skills/delete" method="post">
+    <form action="/dashboard/skills/delete" onsubmit="$('#deleteSkill').modal('hide'); $('#doneSkill').modal('show');" method="post">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
                 <div class="modal-header flex-column">
@@ -132,7 +132,7 @@
 <!-- Delete All Skills Module -->
 
 <div id="deleteAllSkills" class="modal fade deleteModal">
-    <form action="/dashboard/skills/delete_all" method="post">
+    <form action="/dashboard/skills/delete_all" onsubmit="$('#deleteAllSkills').modal('hide'); $('#doneSkill').modal('show');" method="post">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
                 <div class="modal-header flex-column">
@@ -201,7 +201,7 @@
 <!-- Restore skill Module -->
 
 <div id="restoreSkill" class="modal fade deleteModal">
-    <form action="/dashboard/skills/undo" method="post">
+    <form action="/dashboard/skills/undo" onsubmit="$('#restoreSkill').modal('hide'); $('#doneSkill').modal('show');" method="post">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
                 <div class="modal-header flex-column">
@@ -222,4 +222,25 @@
             </div>
         </div>
     </form>
+</div>
+
+
+<!-- Done Modal -->
+<div id="doneSkill" class="modal fade DoneModal">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h4 class="modal-title w-100">Operation Done</h4>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">The Operation on Skill Completed </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success btn-block" onclick="window.location.href='/dashboard/skills';">OK</button>
+            </div>
+        </div>
+    </div>
 </div>

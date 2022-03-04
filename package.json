@@ -19,12 +19,15 @@
     },
     "homepage": "https://github.com/EmranCo/myPortofolio#readme",
     "dependencies": {
+        "dotenv": "^16.0.0",
         "ejs": "^3.1.6",
-        "express": "^4.17.2",
+        "express": "^4.17.3",
         "express-session": "^1.17.2",
         "formidable": "^2.0.1",
+        "joi": "^17.6.0",
         "moment": "^2.29.1",
-        "mongoose": "^6.2.3",
+        "mongoose": "^6.2.4",
+        "nodemailer": "^6.7.2",
         "nodemon": "^2.0.15"
     }
 }

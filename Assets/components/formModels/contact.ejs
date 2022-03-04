@@ -1,0 +1,397 @@
+<!-- Add New address Module  -->
+<div class="modal fade show" onsubmit="$('#addAddress').modal('hide'); $('#doneContact').modal('show');" id="addAddress" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+        <div class="modal-content p-3">
+            <form method="post" action="/dashboard/contact/address/add" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h4 class="modal-title fw-bold text-center" id="exampleModalLabel">Add New Address</h4>
+                    <a href="#" data-dismiss="modal">
+                        <i class="far fa-window-close text-danger" style="font-size: 2em;"></i>
+                    </a>
+                </div>
+                <div class="modal-body">
+
+                    <!-- Form Group (Address Title)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="title">Your Address </label>
+                        <input name="title" class="form-control" id="title" type="text" placeholder="Enter your new Address" required>
+                    </div>
+
+                    <!-- Form Group (Address State)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="state">Address State </label>
+                        <select class="form-control" name="state" id="state" required>
+                            <option value="1" selected>Visible</option>
+                            <option value="0">Hidden</option>
+                        </select>
+                    </div>
+
+                    <!-- Save changes button-->
+
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" value="Save" class="btn curr-bg curr-text">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Add New Phone Module  -->
+<div class="modal fade show" onsubmit="$('#addPhone').modal('hide'); $('#doneContact').modal('show');" id="addPhone" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+        <div class="modal-content p-3">
+            <form method="post" action="/dashboard/contact/phone/add" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h4 class="modal-title fw-bold text-center" id="exampleModalLabel">Add New Phone</h4>
+                    <a href="#" data-dismiss="modal">
+                        <i class="far fa-window-close text-danger" style="font-size: 2em;"></i>
+                    </a>
+                </div>
+                <div class="modal-body">
+
+                    <!-- Form Group (Phone Title)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="title">Your Phone </label>
+                        <input name="title" class="form-control" id="title" type="tel" placeholder="Enter your new Phone" required>
+                    </div>
+
+                    <!-- Form Group (Phone State)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="state">Phone State </label>
+                        <select class="form-control" name="state" id="state" required>
+                            <option value="1" selected>Visible</option>
+                            <option value="0">Hidden</option>
+                        </select>
+                    </div>
+
+                    <!-- Save changes button-->
+
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" value="Save" class="btn curr-bg curr-text">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Add New Email Module  -->
+<div class="modal fade show" onsubmit="$('#addEmail').modal('hide'); $('#doneContact').modal('show');" id="addEmail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+        <div class="modal-content p-3">
+            <form method="post" action="/dashboard/contact/email/add" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h4 class="modal-title fw-bold text-center" id="exampleModalLabel">Add New Email</h4>
+                    <a href="#" data-dismiss="modal">
+                        <i class="far fa-window-close text-danger" style="font-size: 2em;"></i>
+                    </a>
+                </div>
+                <div class="modal-body">
+
+                    <!-- Form Group (Email Title)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="title">Your Email </label>
+                        <input name="title" class="form-control" id="title" type="email" placeholder="Enter your new Email" required>
+                    </div>
+
+                    <!-- Form Group (Email State)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="state">Email State </label>
+                        <select class="form-control" name="state" id="state" required>
+                            <option value="1" selected>Visible</option>
+                            <option value="0">Hidden</option>
+                        </select>
+                    </div>
+
+                    <!-- Save changes button-->
+
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" value="Save" class="btn curr-bg curr-text">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Add New Social Media Module  -->
+<div class="modal fade show" onsubmit="$('#addSocialMedia').modal('hide'); $('#doneContact').modal('show');" id="addSocialMedia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+        <div class="modal-content p-3">
+            <form method="post" action="/dashboard/contact/socialMedia/add" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h4 class="modal-title fw-bold text-center" id="exampleModalLabel">Add New Social Media</h4>
+                    <a href="#" data-dismiss="modal">
+                        <i class="far fa-window-close text-danger" style="font-size: 2em;"></i>
+                    </a>
+                </div>
+                <div class="modal-body">
+
+                    <!-- Form Group (Social Media url)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="title">Your Link </label>
+                        <input name="url" class="form-control" id="url" type="url" placeholder="Enter your Social Media Link" required>
+                    </div>
+
+                    <!-- Form Group (Social Media icon)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="icon">Social Icon </label>
+                        <div class="d-flex flex-row gap-2">
+                            <i class="bi bi-whatsapp" style="font-size:30px" id="iconShow1"></i>
+                            <select class="form-control" name="icon" id="icon" onchange="changeIconShow('icon','iconShow1');" required>
+                            <option value="bi bi-whatsapp" selected=""> WhatsApp </option>
+                            <option value="bi bi-telegram" class="bi bi-telegram">Telegram</option>
+                            <option value="bi bi-youtube" class="bi bi-youtube">Youtube</option>
+                            <option value="bi bi-facebook" class="bi bi-facebook">FaceBook</option>
+                            <option value="bi bi-instagram" class="bi bi-instagram">Instagram</option>
+                            <option value="bi bi-github" class="bi bi-github">Github</option>
+                            <option value="bi bi-linkedin" class="bi bi-linkedin">LinkedIn</option>
+
+                        </select>
+                        </div>
+                    </div>
+
+                    <!-- Form Group (Social Media State)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="state">Email State </label>
+                        <select class="form-control" name="state" id="state" required>
+                            <option value="1" selected>Visible</option>
+                            <option value="0">Hidden</option>
+                        </select>
+                    </div>
+
+                    <!-- Save changes button-->
+
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" value="Save" class="btn curr-bg curr-text">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!--  Edit Forms -->
+
+<!-- Edit Contact Module  -->
+<div class="modal fade show" onsubmit="$('#editContact').modal('hide'); $('#doneContact').modal('show');" id="editContact" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+        <div class="modal-content p-3">
+            <form method="post" action="/dashboard/contact/address/edit" id="editContactForm" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h4 class="modal-title fw-bold text-center" id="exampleModalLabel">
+                        Edit <span class="contactTitleEdit"></span> </h4>
+                    <a href="#" data-dismiss="modal">
+                        <i class="far fa-window-close text-danger" style="font-size: 2em;"></i>
+                    </a>
+                    <input type="hidden" name="_id" id="editContactID">
+                </div>
+                <div class="modal-body">
+
+                    <!-- Form Group (Address Title)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="title">Your <span class="contactTitleEdit"></span> </label>
+                        <input name="title" class="form-control" id="editContactTitle" type="text" required>
+                    </div>
+
+                    <!-- Form Group (Address State)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="state"><span class="contactTitleEdit"></span> State </label>
+                        <select class="form-control" name="state" id="editContactState" required>
+                            <option value="1" selected>Visible</option>
+                            <option value="0">Hidden</option>
+                        </select>
+                    </div>
+
+                    <!-- Save changes button-->
+
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" value="Save" class="btn curr-bg curr-text">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Edit All Social Media Module  -->
+<div class="modal fade show" onsubmit="$('#editSocialMedia').modal('hide'); $('#doneContact').modal('show');" id="editSocialMedia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" style="max-width: fit-content;">
+        <div class="modal-content p-3">
+            <div class="modal-header">
+                <h4 class="modal-title fw-bold text-center" id="exampleModalLabel">Edit Social Media</h4>
+                <a href="#" data-dismiss="modal">
+                    <i class="far fa-window-close text-danger" style="font-size: 2em;"></i>
+                </a>
+            </div>
+            <div class="wrapper modal-body">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="">
+                            <div class="fresh-table table w-100">
+                                <table id="fresh-table" class="table" style="color: var(--current-text-color);">
+                                    <thead>
+                                        <th>Icon</th>
+                                        <th>URL</th>
+                                        <th>State</th>
+                                        <th>Actions</th>
+                                    </thead>
+
+                                    <tbody>
+                                        <% for(const social in contactInfo.socialMedia)
+                                    if (Object.hasOwnProperty.call(contactInfo.socialMedia, social)) {
+                                        const item = contactInfo.socialMedia[social];
+                                        %>
+                                            <tr>
+                                                <td>
+                                                    <i class="<%= item.icon%>"></i>
+                                                </td>
+                                                <td>
+                                                    <%= item.url%>
+                                                </td>
+                                                <td>
+                                                    <% if(item.state==1) { %>
+                                                        <i class="fa fa-solid fa-eye"></i>
+                                                        <%} else { %>
+                                                            <i class="fa fa-solid fa-eye-slash"></i>
+                                                            <% } %>
+
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <i class="far fa-edit text-primary" role="button" data-toggle="modal" data-target="#editOneSocialMedia" onclick="linkEditSocialMedia('<%= item._id %>','<%= item.url %>','<%= item.icon %>','<%= item.state %>'); changeIconShow('editSocialMediaIcon','iconShow2'); ">
+                                                            </i>
+                                                        <i class="far fa-trash-alt text-danger" role="button" data-toggle="modal" data-target="#deleteContact" onclick="linkDeleteID('<%= item._id %>','socialMedia');"></i>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit one Social Media Module  -->
+<div class="modal fade show" onsubmit="$('#editOneSocialMedia').modal('hide'); $('#doneContact').modal('show');" id="editOneSocialMedia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+        <div class="modal-content p-3">
+            <form method="post" action="/dashboard/contact/socialMedia/edit" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h4 class="modal-title fw-bold text-center" id="exampleModalLabel">Edit Social Media</h4>
+                    <a href="#" data-dismiss="modal">
+                        <i class="far fa-window-close text-danger" style="font-size: 2em;"></i>
+                    </a>
+                    <input type="hidden" name="_id" id="editSocialMediaID">
+                </div>
+                <div class="modal-body">
+
+                    <!-- Form Group (Social Media url)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="title">Your Link </label>
+                        <input name="url" class="form-control" id="editSocialMediaUrl" type="url" placeholder="Enter your Social Media Link" required>
+                    </div>
+
+                    <!-- Form Group (Social Media icon)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="icon">Social Icon </label>
+                        <div class="d-flex flex-row gap-2">
+                            <i class="bi bi-whatsapp" style="font-size:30px" id="iconShow2"></i>
+                            <select class="form-control" name="icon" id="editSocialMediaIcon" onchange="changeIconShow('editSocialMediaIcon','iconShow2');" required>
+                            <option value="bi bi-whatsapp" selected > <i class="bi bi-whatsapp">WhatsApp</i> </option>
+                            <option value="bi bi-telegram" class="bi bi-telegram">Telegram</option>
+                            <option value="bi bi-youtube"  class="bi bi-youtube">Youtube</option>
+                            <option value="bi bi-facebook"  class="bi bi-facebook">FaceBook</option>
+                            <option value="bi bi-instagram" class="bi bi-instagram">Instagram</option>
+                            <option value="bi bi-github" class="bi bi-github">Github</option>
+                            <option value="bi bi-linkedin" class="bi bi-linkedin">LinkedIn</option>
+
+                        </select>
+                        </div>
+                    </div>
+
+                    <!-- Form Group (Social Media State)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="state">Email State </label>
+                        <select class="form-control" name="state" id="editSocialMediaState" required>
+                            <option value="1" selected>Visible</option>
+                            <option value="0">Hidden</option>
+                        </select>
+                    </div>
+
+                    <!-- Save changes button-->
+
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" value="Save" class="btn curr-bg curr-text">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Delete Form -->
+
+<!-- Delete Contact Module -->
+
+<div id="deleteContact" class="modal fade deleteModal" onsubmit="$('#deleteContact').modal('hide'); $('#doneContact').modal('show');">
+    <form action="" id="deleteContactForm" method="post">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <div class="icon-box">
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                    <h4 class="modal-title w-100">Are you sure?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to delete this <span id="contactTitle"></span> ? This process cannot be undone.</p>
+                </div>
+                <input type="hidden" name="_id" value="" id="deleteContactID">
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Done Modal -->
+<div id="doneContact" class="modal fade DoneModal">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h4 class="modal-title w-100">Operation Done</h4>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">The Operation on Skill Completed </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success btn-block" onclick="window.location.href='/dashboard/contact';">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function changeIconShow(select, icon) {
+        $('#' + icon).attr('class', $('#' + select).val());
+    }
+</script>

@@ -2,32 +2,32 @@ const userInfo = require('../../model/userInfoModel');
 const services = require('../../model/servicesModel');
 var formidable = require('formidable');
 const getFileInfo = require('../../getFile');
+const userThem = require('../../model/systemUtils')
 const fs = require('fs');
-var userData = null;
-var trashData = null;
 
-const getUserInfo = (req, res) => {
-    userInfo.findOne({}, (err, data) => {
-        if (err) console.log(err);
-        userData = data;
-    })
-};
+const showServices = (req, res) => {
 
-const getTrashedServices = (req, res) => {
-    services.find({ state: 0 }, (err, data) => {
-        if (err) console.log(err);
-        trashData = data;
-    })
-}
+    services.find({ state: 1 })
+        .then(data => {
+            userInfo.findOne({})
+                .then((userData) => {
+                    services.find({ state: 0 })
+                        .then((trashData) => {
+                            userThem.find({}, (themErr, themData) => {
 
-const showServices = async(req, res) => {
-
-    services.find({ state: 1 }, async(err, data) => {
-        if (err) console.log(err);
-        await getUserInfo(req, res);
-        await getTrashedServices(req, res);
-        res.render('./dashboardView/services', { userInfo: userData, services: data, Trash: trashData });
-    })
+                                res.render('./dashboardView/services', {
+                                    userInfo: userData,
+                                    services: data,
+                                    Trash: trashData,
+                                    adminThem: themData[0].adminThem
+                                });
+                            });
+                        })
+                        .catch((err) => console.log(err));
+                })
+                .catch((err) => console.log(err));
+        })
+        .catch((err) => console.log(err));
 }
 
 const addNewService = (req, res) => {
@@ -37,7 +37,7 @@ const addNewService = (req, res) => {
 
         if (files) {
             var image = getFileInfo(files.image, '\\Assets\\uploads\\services\\');
-            if (image.extention === "jpg") {
+            if (image.extention === "jpg" || image.extention.toLowerCase() === 'png') {
                 fs.rename(image.oldPath, image.newPath, () => {});
 
                 if (fields) {
@@ -71,7 +71,7 @@ const editService = (req, res) => {
 
             image = getFileInfo(files.image, '\\Assets\\uploads\\services\\');
 
-            if (image.extention === "jpg") {
+            if (image.extention.toLowerCase() === "jpg" || image.extention.toLowerCase() === "png") {
                 fs.rename(image.oldPath, image.newPath, () => {});
             } else if (image.extention === "") {
 

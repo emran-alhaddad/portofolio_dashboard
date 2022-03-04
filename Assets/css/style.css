@@ -53,6 +53,7 @@ html {
 .bodyStructure {
     display: flex;
     flex-direction: row;
+    min-height: 100vh;
 }
 
 body {
@@ -146,18 +147,16 @@ header nav ul {
 }
 
 header nav ul li {
-    margin: 10px 0;
+    margin: 3px 0;
     list-style-type: none;
     font-size: 21px;
-    padding: 10px 15px;
+    padding: 7px 15px;
     padding-left: 45px;
     transition: ease-in-out 300ms;
     position: relative;
 }
 
-header nav ul li:hover {
-    font-size: 22px;
-}
+header nav ul li:hover {}
 
 header nav ul li::before {
     transform: scaleX(0);
@@ -195,7 +194,7 @@ header nav ul li::before {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
-    ;
+    max-width: 100%;
     padding: 0;
 }
 
@@ -231,7 +230,7 @@ header nav ul li::before {
 
 main {
     margin: 2% 5%;
-    width: 90%;
+    width: -webkit-fill-available;
     height: 90%;
 }
 
@@ -261,6 +260,7 @@ section aside img {
 
 .summary {
     padding: 3%;
+    text-align: justify;
 }
 
 .card p {
@@ -270,12 +270,12 @@ section aside img {
 
 aside {
     margin: 2% 6%;
-    width: 50%;
+    width: -webkit-fill-available;
     height: 90%;
 }
 
 #home aside {
-    height: auto;
+    width: fit-content;
 }
 
 
@@ -433,102 +433,6 @@ footer h2 {
     margin-right: 1vw;
 }
 
-@media(max-width:768px) {
-    header nav {
-        flex-direction: row;
-    }
-    header nav ul li {
-        margin: 10px 0;
-        width: 60%;
-        padding-left: 15%;
-    }
-    header nav ul a {
-        font-size: 15px;
-    }
-    header nav img {
-        width: 13vw;
-    }
-    .bodyStructure {
-        flex-direction: column;
-    }
-    .card {
-        flex-direction: column;
-    }
-    section aside img {
-        border-radius: 5%;
-    }
-    .gridShow {
-        flex-direction: column;
-    }
-    .gridShow img {
-        width: 92%;
-        padding: 4%;
-        border-radius: 10%;
-    }
-    .serviceBox {
-        width: 80%;
-        height: auto;
-        padding: 4%;
-        border-radius: 10%;
-        margin-bottom: 10px;
-    }
-    #buttonUp {
-        font-size: 9vw;
-    }
-    #contact a {
-        font-size: 7vw;
-    }
-    .toggleMenuButton {
-        display: inline;
-    }
-    #myNav {
-        width: 100%;
-        height: 65%;
-        background-color: var(--current-bg-color);
-        position: fixed;
-        top: -100%;
-        left: 100%;
-        padding-top: 40px;
-        transition: 1s;
-        z-index: 999;
-        border-radius: 0px 0px 0px 33%;
-        box-shadow: 0 0 20px var(--current-body-color);
-    }
-    .closeButton {
-        display: inline;
-    }
-    aside {
-        width: 90%;
-    }
-}
-
-@media(max-width:1000px) and (min-width:769px) {
-    #home,
-    #contact {
-        flex-direction: column;
-    }
-    #home img {
-        width: 50vw;
-        border-radius: 5%;
-    }
-    header nav ul a {
-        font-size: 18px;
-    }
-    .gridShow img {
-        width: 92%;
-        padding: 4%;
-        border-radius: 10%;
-    }
-    .containerForm {
-        width: 57vw;
-    }
-    #myNav {
-        border-radius: 0;
-        box-shadow: none;
-        top: 0;
-    }
-}
-
 
 /* The switch - the box around the slider */
 
@@ -643,6 +547,7 @@ input:checked+.slider:before {
 #home,
 #summary {
     position: relative;
+    flex-direction: row;
 }
 
 .action-controls {
@@ -908,4 +813,127 @@ a:hover {
 
 .modal-dialog {
     max-width: 50%;
+}
+
+.wrapper {
+    width: 100%;
+    overflow: scroll;
+}
+
+.modal-header>a {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#myNav {
+    width: 235px;
+}
+
+@media(max-width:768px) {
+    header nav {
+        flex-direction: row;
+    }
+    #home {
+        flex-direction: column;
+    }
+    .container {
+        max-width: 100%;
+    }
+    header nav ul li {
+        margin: 0 0 0 15%;
+        padding: 7px 15px;
+        padding-left: 15%;
+    }
+    header nav ul a {
+        font-size: 15px;
+    }
+    header nav img {
+        width: 13vw;
+    }
+    .bodyStructure {
+        flex-direction: column;
+    }
+    .card {
+        flex-direction: column;
+    }
+    section aside img {
+        border-radius: 5%;
+        width: 60%;
+        display: block;
+    }
+    .gridShow {
+        flex-direction: column;
+    }
+    .gridShow img {
+        width: 92%;
+        padding: 4%;
+        border-radius: 10%;
+    }
+    .serviceBox {
+        width: 80%;
+        height: auto;
+        padding: 4%;
+        border-radius: 10%;
+        margin-bottom: 10px;
+    }
+    #buttonUp {
+        font-size: 9vw;
+    }
+    #contact a {
+        font-size: 7vw;
+    }
+    .toggleMenuButton {
+        display: inline;
+    }
+    #myNav {
+        width: 100%;
+        padding-bottom: 15px;
+        background-color: var(--current-bg-color);
+        position: fixed;
+        top: -100%;
+        left: 100%;
+        padding-top: 40px;
+        transition: 1s;
+        z-index: 999;
+        border-radius: 0px 0px 0px 33%;
+        box-shadow: 0 0 20px var(--current-body-color);
+    }
+    .closeButton {
+        display: inline;
+    }
+    aside {
+        width: 90%;
+    }
+    .modal-dialog {
+        max-width: fit-content;
+        margin: auto;
+    }
+}
+
+@media (min-width:769px) and (max-width:1000) {
+    #home,
+    #contact {
+        flex-direction: column;
+    }
+    #home img {
+        width: 50vw;
+        border-radius: 5%;
+    }
+    header nav ul a {
+        font-size: 18px;
+    }
+    .gridShow img {
+        width: 92%;
+        padding: 4%;
+        border-radius: 10%;
+    }
+    .containerForm {
+        width: 57vw;
+    }
+    #myNav {
+        border-radius: 0;
+        box-shadow: none;
+        top: 0;
+    }
 }

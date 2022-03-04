@@ -1,9 +1,10 @@
 const express = require('express');
-const showPortofolio = require('../../controller/User/profileController');
+const portofolio = require('../../controller/User/profileController');
 const router = express.Router();
 
 
-router.get('', showPortofolio);
+router.get('', portofolio.showPortofolio);
+router.post('/add', portofolio.addOrder);
 
 
 

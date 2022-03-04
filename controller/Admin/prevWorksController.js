@@ -2,32 +2,33 @@ const userInfo = require('../../model/userInfoModel');
 const prevWorks = require('../../model/prevWorksModel');
 var formidable = require('formidable');
 const getFileInfo = require('../../getFile');
+const userThem = require('../../model/systemUtils')
 const fs = require('fs');
-var userData = null;
-var trashData = null;
 
-const getUserInfo = (req, res) => {
-    userInfo.findOne({}, (err, data) => {
-        if (err) console.log(err);
-        userData = data;
-    })
-};
 
-const getTrashedPrevWorks = (req, res) => {
-    prevWorks.find({ state: 0 }, (err, data) => {
-        if (err) console.log(err);
-        trashData = data;
-    })
-}
+const showPrevWorks = (req, res) => {
 
-const showPrevWorks = async(req, res) => {
+    prevWorks.find({ state: 1 })
+        .then(data => {
+            userInfo.findOne({})
+                .then((userData) => {
+                    prevWorks.find({ state: 0 })
+                        .then((trashData) => {
+                            userThem.find({}, (themErr, themData) => {
 
-    prevWorks.find({ state: 1 }, async(err, data) => {
-        if (err) console.log(err);
-        await getUserInfo(req, res);
-        await getTrashedPrevWorks(req, res);
-        res.render('./dashboardView/prevWorks', { userInfo: userData, prevWorks: data, Trash: trashData });
-    })
+                                res.render('./dashboardView/prevWorks', {
+                                    userInfo: userData,
+                                    prevWorks: data,
+                                    Trash: trashData,
+                                    adminThem: themData[0].adminThem
+                                });
+                            });
+                        })
+                        .catch((err) => console.log(err));
+                })
+                .catch((err) => console.log(err));
+        })
+        .catch((err) => console.log(err));
 }
 
 const addNewPrevWork = (req, res) => {
@@ -37,7 +38,7 @@ const addNewPrevWork = (req, res) => {
 
         if (files) {
             var image = getFileInfo(files.image, '\\Assets\\uploads\\prevWorks\\');
-            if (image.extention === "jpg") {
+            if (image.extention.toLowerCase() === "jpg" || image.extention.toLowerCase() === "png") {
                 fs.rename(image.oldPath, image.newPath, () => {});
 
                 if (fields) {
@@ -54,7 +55,7 @@ const addNewPrevWork = (req, res) => {
             } else
                 res.write(`
                 <script>
-                    alert("Skill Image Must be JPG"); 
+                    alert("Skill Image Must be JPG or PNG"); 
                     window.location.pathname = "/dashboard/skills";
                 </script>`);
 
@@ -72,7 +73,7 @@ const editPrevWork = (req, res) => {
 
             image = getFileInfo(files.image, '\\Assets\\uploads\\prevWorks\\');
 
-            if (image.extention === "jpg") {
+            if (image.extention.toLowerCase() === "jpg" || image.extention.toLowerCase() === "png") {
                 fs.rename(image.oldPath, image.newPath, () => {});
             } else if (image.extention === "") {
 

@@ -1,7 +1,8 @@
 <header id="top">
     <nav>
         <section>
-            <img id="logo" src="imgs/myImage.jpg" alt="MyImage" onmouseenter="rotateImage(this);" onmouseleave="de_rotateImage(this);">
+
+            <img id="logo" src="../uploads/<%= userInfo.avater %>" alt="MyImage" onmouseenter="rotateImage(this);" onmouseleave="de_rotateImage(this);">
             <i class="bi bi-menu-button-wide-fill toggleMenuButton " onclick="openNav();"></i>
         </section>
         <div id="myNav">
@@ -11,16 +12,27 @@
                     <a href="#home">HOME</a>
                 </li>
                 <li class="bi bi-info-circle-fill">
-                    <a href="#about">ABOUT-US</a>
+                    <a href="#skills">SKILLS</a>
+                </li>
+                <li class="bi bi-info-circle-fill">
+                    <a href="#experiences">EXPERIENCE</a>
                 </li>
                 <li class="bi bi-clock-history">
-                    <a href="#prev">Prev Works</a>
+                    <a href="#prevWorks">PREV WORKS</a>
                 </li>
                 <li class="bi bi-sliders">
                     <a href="#services">SERVICES</a>
                 </li>
                 <li class="bi bi-person-lines-fill">
-                    <a href="#contact">CONTACT-US</a>
+                    <a href="#contact">CONTACT</a>
+                </li>
+
+                <li class="bi bi-person-lines-fill">
+                    <a href="#orders">SEND ORDER</a>
+                </li>
+
+                <li class="fas fa-sign-in-alt mt-3" style="font-weight: 600;">
+                    <a href="/dashboard/login">LOGIN</a>
                 </li>
             </ul>
         </div>

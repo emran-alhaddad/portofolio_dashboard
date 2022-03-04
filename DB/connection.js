@@ -1,5 +1,7 @@
+require("dotenv").config();
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost:27017/portofolio")
+
+mongoose.connect(process.env.DB)
     .then(() => { console.log("Connected to Database") })
     .catch((err) => { console.log(` Error Occured >>>> ${err}`) });
 

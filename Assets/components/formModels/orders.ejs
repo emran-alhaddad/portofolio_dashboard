@@ -1,0 +1,155 @@
+<!-- Delete order Module -->
+
+<div id="deleteOrder" class="modal fade deleteModal">
+    <form action="/dashboard/orders/delete" method="post">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <div class="icon-box">
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                    <h4 class="modal-title w-100">Are you sure?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really Completed this Order ? </p>
+                </div>
+                <input type="hidden" name="_id" value="" id="deleteOrderID">
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button type="submit" class="btn btn-primary">Yes</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Delete All Orders Module -->
+
+<div id="deleteAllOrders" class="modal fade deleteModal">
+    <form action="/dashboard/orders/delete_all" method="post">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <div class="icon-box">
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                    <h4 class="modal-title w-100">Are you sure?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really Completed All Orders ? </p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button type="submit" class="btn btn-primary">Yes</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Show Orders Trash Module  -->
+<div class="modal fade show" id="showTrashedOrders" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+    <div style="max-width: 90%;" class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg ">
+        <div class="modal-content p-3">
+            <form method="post" action="" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h4 class="modal-title fw-bold text-center" id="exampleModalLabel">Completed Orders</h4>
+                    <a href="#" data-dismiss="modal">
+                        <i class="far fa-window-close text-danger" style="font-size: 2em;"></i>
+                    </a>
+                </div>
+                <div class="modal-body">
+
+                    <div class="wrapper">
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="">
+                                    <div class="fresh-table table w-100">
+                                        <table id="fresh-table" class="table" style="color: var(--current-text-color);">
+                                            <thead>
+                                                <th>Full Name</th>
+                                                <th>Email</th>
+                                                <th>Service</th>
+                                                <th>Subject</th>
+                                                <th>State</th>
+                                                <th>Actions</th>
+                                            </thead>
+
+                                            <tbody>
+                                                <% for(const trash in Trash)
+                                                if (Object.hasOwnProperty.call(Trash, trash)) {
+                                                %>
+                                                    <tr>
+                                                        <td>
+                                                            <%= Trash[trash].fullName %>
+                                                        </td>
+                                                        <td>
+                                                            <%= Trash[trash].email %>
+                                                        </td>
+                                                        <td>
+                                                            <%= Trash[trash].service %>
+                                                        </td>
+                                                        <td>
+                                                            <%= Trash[trash].subject %>
+                                                        </td>
+
+                                                        <td>
+                                                            <% if(Trash[trash].state==1) { %>
+                                                                <i class="fa fa-solid fa-eye"></i>
+                                                                <%} else { %>
+                                                                    <i class="fa fa-solid fa-eye-slash"></i>
+                                                                    <% } %>
+
+                                                        </td>
+
+                                                        <td>
+                                                            <i class="fa fa-solid fa-trash-undo text-outline-primary" role="button" data-toggle="modal" data-target="#restoreOrder" onclick="linkTrashID('<%= Trash[trash]._id; %>');"> Restore</i>
+                                                        </td>
+                                                    </tr>
+                                                    <% } %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Save changes button-->
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Restore order Module -->
+
+<div id="restoreOrder" class="modal fade deleteModal">
+    <form action="/dashboard/orders/undo" method="post">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <div class="icon-box">
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                    <h4 class="modal-title w-100">Restore Selected Order </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to Restore this Order ? </p>
+                </div>
+                <input type="hidden" name="_id" value="" id="undoOrderID">
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Restore</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

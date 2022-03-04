@@ -12,6 +12,8 @@ const contaciInfoRoute = require('./Routes/Admin/contactInfoRoutes');
 const loginRoute = require('./Routes/Admin/loginRoutes');
 const { isLogedIn, logOut } = require('./controller/Admin/loginController');
 const portofolioRoute = require('./Routes/User/portofolioRoutes');
+const passwordReset = require("./Routes/Admin/passwordReset");
+const { changeUserThemToLight, changeUserThemToDark, changeAdminThemToLight, changeAdminThemToDark } = require('./controller/themController');
 
 
 // Server Configurations
@@ -24,11 +26,17 @@ server.use(express.json());
 server.listen(PORT, console.log(`Server started on port ${PORT}`));
 
 // Works with Routes 
-server.use('/', portofolioRoute);
+server.get('/them/userThem/Light', changeUserThemToLight);
+server.get('/them/userThem/Dark', changeUserThemToDark);
+server.get('/them/adminThem/Light', changeAdminThemToLight);
+server.get('/them/adminThem/Dark', changeAdminThemToDark);
 
+server.use('/', portofolioRoute);
+server.use('/orders/', portofolioRoute)
 
 server.use('/dashboard/login', loginRoute);
 server.use('/dashboard/logout', logOut);
+server.use("/dashboard/password-reset", passwordReset);
 server.use(isLogedIn);
 server.use('/dashboard/', userInfoRoute);
 server.use('/dashboard/skills/', skillsRoute);

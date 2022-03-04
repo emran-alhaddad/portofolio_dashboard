@@ -1,30 +1,31 @@
 const experiences = require('../../model/experiencesModel');
 const userInfo = require('../../model/userInfoModel');
 var formidable = require('formidable');
-var userData = null;
-var trashData = null;
+const userThem = require('../../model/systemUtils')
 
-const getUserInfo = (req, res) => {
-    userInfo.findOne({}, (err, data) => {
-        if (err) console.log(err);
-        userData = data;
-    })
-};
+const showExperiences = (req, res) => {
 
-const getTrashedExperiences = (req, res) => {
-    experiences.find({ state: 0 }, (err, data) => {
-        if (err) console.log(err);
-        trashData = data;
-    })
-}
+    experiences.find({ state: 1 })
+        .then(data => {
+            userInfo.findOne({})
+                .then((userData) => {
+                    experiences.find({ state: 0 })
+                        .then((trashData) => {
+                            userThem.find({}, (themErr, themData) => {
 
-const showExperiences = async(req, res) => {
-    await getUserInfo(req, res);
-    getTrashedExperiences(req, res);
-    experiences.find({ state: 1 }, (err, data) => {
-        if (err) console.log(err);
-        res.render('./dashboardView/experiences', { userInfo: userData, experiences: data, Trash: trashData });
-    })
+                                res.render('./dashboardView/experiences', {
+                                    userInfo: userData,
+                                    experiences: data,
+                                    Trash: trashData,
+                                    adminThem: themData[0].adminThem
+                                });
+                            });
+                        })
+                        .catch((err) => console.log(err));
+                })
+                .catch((err) => console.log(err));
+        })
+        .catch((err) => console.log(err));
 }
 
 const addNewExperience = (req, res) => {
@@ -46,8 +47,7 @@ const editExperience = (req, res) => {
     form.parse(req, function(err, fields, files) {
 
         if (fields) {
-            experiences.deleteOne({ id: fields._id }, { returnDocument: 'after' }, () => {});
-            experiences.create(fields);
+            experiences.findByIdAndUpdate(fields._id, fields, { returnDocument: 'after' }, () => {});
             res.redirect('/dashboard/experiences');
         }
 

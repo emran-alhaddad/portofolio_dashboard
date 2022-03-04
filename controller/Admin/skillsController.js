@@ -2,31 +2,32 @@ const userInfo = require('../../model/userInfoModel');
 const skills = require('../../model/skillsModel');
 var formidable = require('formidable');
 const fs = require("fs");
-var userData = null;
-var trashData = null;
-
-const getUserInfo = (req, res) => {
-    userInfo.findOne({}, (err, data) => {
-        if (err) console.log(err);
-        userData = data;
-    })
-};
-
-const getTrashedSkills = (req, res) => {
-    skills.find({ state: 0 }, (err, data) => {
-        if (err) console.log(err);
-        trashData = data;
-    })
-}
+const userThem = require('../../model/systemUtils')
 
 const showSkills = async(req, res) => {
 
-    skills.find({ state: 1 }, async(err, data) => {
-        if (err) console.log(err);
-        await getUserInfo(req, res);
-        await getTrashedSkills(req, res);
-        res.render('./dashboardView/skills', { userInfo: userData, skills: data, Trash: trashData });
-    })
+    skills.find({ state: 1 })
+        .then(data => {
+            userInfo.findOne({})
+                .then((userData) => {
+                    skills.find({ state: 0 })
+                        .then((trashData) => {
+                            userThem.find({}, (themErr, themData) => {
+
+
+                                res.render('./dashboardView/skills', {
+                                    userInfo: userData,
+                                    skills: data,
+                                    Trash: trashData,
+                                    adminThem: themData[0].adminThem
+                                });
+                            });
+                        })
+                        .catch((err) => console.log(err));
+                })
+                .catch((err) => console.log(err));
+        })
+        .catch((err) => console.log(err));
 }
 
 const addNewSkill = (req, res) => {
@@ -48,8 +49,7 @@ const editSkill = (req, res) => {
     form.parse(req, function(err, fields, files) {
 
         if (fields) {
-            skills.deleteOne({ id: fields._id }, { returnDocument: 'after' }, () => {});
-            skills.create(fields);
+            skills.findByIdAndUpdate(fields._id, fields, { returnDocument: 'after' }, () => {});
             res.redirect('/dashboard/skills');
         }
 

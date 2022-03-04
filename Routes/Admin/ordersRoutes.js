@@ -5,16 +5,11 @@ const router = express.Router();
 
 router.get('', orders.showOrders);
 
-router.post(':id', (req, res) => {
+router.post('/undo', orders.restoreOrder);
 
-});
+router.post('/delete', orders.deleteOrder);
 
-router.put(':id', (req, res) => {
+router.post('/delete_all', orders.deleteAllOrders);
 
-});
-
-router.delete(':id', (req, res) => {
-
-});
 
 module.exports = router;

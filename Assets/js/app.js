@@ -11,15 +11,34 @@ function closeNav() {
 }
 
 // ----------------- Themming Section ----------------------//
-const toggleThem = () => {
+const toggleThem = (access, type = "") => {
+    var url = '/them/';
+    if (access === 'user') url += 'userThem/';
+    else if (access === 'admin') url += 'adminThem/';
+
     var body = document.getElementsByTagName('body')[0];
-    if (body.classList.contains('Dark-Them')) {
-        body.classList.remove('Dark-Them');
-        body.classList.add('Light-Them');
-    } else {
+
+    if (type == "Dark") {
         body.classList.remove('Light-Them');
         document.getElementsByTagName('body')[0].classList.add('Dark-Them');
+
+    } else if (type == "Light") {
+        body.classList.remove('Dark-Them');
+        body.classList.add('Light-Them');
+
+    } else {
+        if (body.classList.contains('Dark-Them')) {
+            body.classList.remove('Dark-Them');
+            body.classList.add('Light-Them');
+            url += 'Light';
+        } else {
+            body.classList.remove('Light-Them');
+            document.getElementsByTagName('body')[0].classList.add('Dark-Them');
+            url += 'Dark';
+        }
+        window.location.href = url;
     }
+
 }
 
 
@@ -59,7 +78,7 @@ const enableItems = ids => {
 }
 
 const validateName = name => {
-    if (name.value.length > 5 && name.value.length < 10) {
+    if (name.value.length > 3 && name.value.length < 50) {
         name.classList.add('inputSuccessLightThem');
         enableItem('email');
     } else {
