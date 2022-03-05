@@ -35,20 +35,19 @@ const deleteOrder = (req, res) => {
 
     if (req.body) {
         orders.findByIdAndUpdate(req.body._id, { state: 0 }, { returnDocument: 'after' }, () => {});
-        res.redirect('/dashboard/orders');
+
     }
 }
 
 const deleteAllOrders = (req, res) => {
     orders.updateMany({ state: 1 }, { state: 0 }, { returnDocument: 'after' }, () => {});
-    res.redirect('/dashboard/orders');
+
 }
 
 const restoreOrder = (req, res) => {
 
     if (req.body) {
         orders.findByIdAndUpdate(req.body._id, { state: 1 }, { returnDocument: 'after' }, () => {});
-        res.redirect('/dashboard/orders');
     }
 }
 

@@ -47,14 +47,13 @@ const addNewService = (req, res) => {
                         description: fields.description,
                         state: fields.state
                     });
-                    res.redirect('/dashboard/services');
                 } else
-                    res.redirect('/');
+                    res.redirect('/dashboard/');
             } else
                 res.write(`
                 <script>
                     alert("Skill Image Must be JPG"); 
-                    window.location.pathname = "/dashboard/skills";
+                    window.location.pathname = "/dashboard/services";
                 </script>`);
 
         }
@@ -108,7 +107,7 @@ const editService = (req, res) => {
                 }, { returnDocument: 'after' }, () => {});
             }
         }
-        res.redirect('/dashboard/services');
+
     });
 }
 
@@ -116,13 +115,13 @@ const deleteService = (req, res) => {
 
     if (req.body) {
         services.findByIdAndUpdate(req.body._id, { state: 0 }, { returnDocument: 'after' }, () => {});
-        res.redirect('/dashboard/services');
+
     }
 }
 
 const deleteAllServices = (req, res) => {
     services.updateMany({ state: 1 }, { state: 0 }, { returnDocument: 'after' }, () => {});
-    res.redirect('/dashboard/services');
+
 
 }
 
@@ -130,7 +129,7 @@ const restoreService = (req, res) => {
 
     if (req.body) {
         services.findByIdAndUpdate(req.body._id, { state: 1 }, { returnDocument: 'after' }, () => {});
-        res.redirect('/dashboard/services');
+
     }
 }
 

@@ -35,7 +35,7 @@ const addNewExperience = (req, res) => {
 
         if (fields) {
             experiences.create(fields);
-            res.redirect('/dashboard/experiences');
+
         }
 
     });
@@ -48,7 +48,7 @@ const editExperience = (req, res) => {
 
         if (fields) {
             experiences.findByIdAndUpdate(fields._id, fields, { returnDocument: 'after' }, () => {});
-            res.redirect('/dashboard/experiences');
+
         }
 
     });
@@ -58,7 +58,7 @@ const deleteExperience = (req, res) => {
 
     if (req.body) {
         experiences.findByIdAndUpdate(req.body._id, { state: 0 }, { returnDocument: 'after' }, () => {});
-        res.redirect('/dashboard/experiences');
+
     }
 }
 
@@ -66,7 +66,7 @@ const deleteAllExperiences = (req, res) => {
 
 
     experiences.updateMany({}, { state: 0 }, { returnDocument: 'after' }, () => {});
-    res.redirect('/dashboard/experiences');
+
 
 }
 
@@ -74,7 +74,7 @@ const restoreExperience = (req, res) => {
 
     if (req.body) {
         experiences.findByIdAndUpdate(req.body._id, { state: 1 }, { returnDocument: 'after' }, () => {});
-        res.redirect('/dashboard/experiences');
+
     }
 }
 

@@ -1,5 +1,5 @@
 <!-- Add New Skill Module  -->
-<div class="modal fade show" id="addSkill" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+<div class="modal fade show" id="addSkill" onsubmit="$('#addSkill').modal('hide'); $('#doneSkill').modal('show');" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
         <div class="modal-content p-3">
             <form method="post" action="/dashboard/skills/add" onsubmit="$('#addSkill').modal('hide'); $('#doneSkill').modal('show');" enctype="multipart/form-data">
@@ -51,7 +51,7 @@
 </div>
 
 <!-- Edit Skill Module  -->
-<div class="modal fade show" id="editSkill" tabindex="-1" onsubmit="$('#doneSkill').modal('show'); $('#editSkill').modal('hide'); " aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+<div class="modal fade show" id="editSkill" tabindex="-1" onsubmit="$('#editSkill').modal('hide'); $('#doneSkill').modal('show');" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
         <div class="modal-content p-3">
             <form method="post" action="/dashboard/skills/edit" enctype="multipart/form-data">
@@ -105,7 +105,7 @@
 
 <!-- Delete skill Module -->
 
-<div id="deleteSkill" class="modal fade deleteModal">
+<div id="deleteSkill" class="modal fade deleteModal" onsubmit="$('#deleteSkill').modal('hide'); $('#doneSkill').modal('show');">
     <form action="/dashboard/skills/delete" onsubmit="$('#deleteSkill').modal('hide'); $('#doneSkill').modal('show');" method="post">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
@@ -131,7 +131,7 @@
 
 <!-- Delete All Skills Module -->
 
-<div id="deleteAllSkills" class="modal fade deleteModal">
+<div id="deleteAllSkills" class="modal fade deleteModal" onsubmit="$('#deleteAllSkills').modal('hide'); $('#doneSkill').modal('show');">
     <form action="/dashboard/skills/delete_all" onsubmit="$('#deleteAllSkills').modal('hide'); $('#doneSkill').modal('show');" method="post">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
@@ -200,7 +200,7 @@
 
 <!-- Restore skill Module -->
 
-<div id="restoreSkill" class="modal fade deleteModal">
+<div id="restoreSkill" class="modal fade deleteModal" onsubmit="$('#restoreSkill').modal('hide'); $('#doneSkill').modal('show');">
     <form action="/dashboard/skills/undo" onsubmit="$('#restoreSkill').modal('hide'); $('#doneSkill').modal('show');" method="post">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">

@@ -34,7 +34,7 @@ const updateContactData = newData => {
         }, { returnDocument: 'after' },
         function(err) {
             if (err) return handleError(err);
-            console.log(new Date().toLocaleString(), "Addresses Updated Success")
+            console.log(new Date().toLocaleString(), "Contact Updated Success")
         });
 }
 

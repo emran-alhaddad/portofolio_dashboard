@@ -345,7 +345,7 @@
 
 <!-- Delete Contact Module -->
 
-<div id="deleteContact" class="modal fade deleteModal" onsubmit="$('#deleteContact').modal('hide'); $('#doneContact').modal('show');">
+<div id="deleteContact" onsubmit="$('#deleteContact').modal('hide'); $('#doneContact').modal('show');" class="modal fade deleteModal" onsubmit="$('#deleteContact').modal('hide'); $('#doneContact').modal('show');">
     <form action="" id="deleteContactForm" method="post">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
@@ -369,6 +369,7 @@
     </form>
 </div>
 
+
 <!-- Done Modal -->
 <div id="doneContact" class="modal fade DoneModal">
     <div class="modal-dialog modal-confirm">
@@ -380,7 +381,7 @@
                 <h4 class="modal-title w-100">Operation Done</h4>
             </div>
             <div class="modal-body">
-                <p class="text-center">The Operation on Skill Completed </p>
+                <p class="text-center">The Operation on Contact Completed </p>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-success btn-block" onclick="window.location.href='/dashboard/contact';">OK</button>
@@ -388,6 +389,9 @@
         </div>
     </div>
 </div>
+
+
+
 
 
 <script>

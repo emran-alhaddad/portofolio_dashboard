@@ -45,3 +45,5 @@ server.use('/dashboard/services/', servicesRoute);
 server.use('/dashboard/prevWorks/', prevWorksRoute);
 server.use('/dashboard/contact/', contaciInfoRoute);
 server.use('/dashboard/orders/', ordersRoute);
+server.use('/dashboard/*', (req, res) => { res.render('./dashboardView/404') })
+server.use('*', (req, res) => { res.render('./userView/404') })

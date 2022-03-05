@@ -1,5 +1,5 @@
 <!-- Add New Service Module  -->
-<div class="modal fade show" id="addService" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+<div class="modal fade show" id="addService" onsubmit="$('#addService').modal('hide'); $('#doneService').modal('show');" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
         <div class="modal-content p-3">
             <form method="post" action="/dashboard/services/add" enctype="multipart/form-data">
@@ -56,7 +56,7 @@
 </div>
 
 <!-- Edit Service Module  -->
-<div class="modal fade show" id="editService" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+<div class="modal fade show" id="editService" onsubmit="$('#editService').modal('hide'); $('#doneService').modal('show');" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
         <div class="modal-content p-3">
             <form method="post" action="/dashboard/services/edit" enctype="multipart/form-data">
@@ -116,7 +116,7 @@
 
 <!-- Delete service Module -->
 
-<div id="deleteService" class="modal fade deleteModal">
+<div id="deleteService" class="modal fade deleteModal" onsubmit="$('#deleteService').modal('hide'); $('#doneService').modal('show');">
     <form action="/dashboard/services/delete" method="post">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
@@ -142,7 +142,7 @@
 
 <!-- Delete All Services Module -->
 
-<div id="deleteAllServices" class="modal fade deleteModal">
+<div id="deleteAllServices" class="modal fade deleteModal" onsubmit="$('#deleteAllServices').modal('hide'); $('#doneService').modal('show');">
     <form action="/dashboard/services/delete_all" method="post">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
@@ -235,7 +235,7 @@
 
 <!-- Restore service Module -->
 
-<div id="restoreService" class="modal fade deleteModal">
+<div id="restoreService" class="modal fade deleteModal" onsubmit="$('#restoreService').modal('hide'); $('#doneService').modal('show');">
     <form action="/dashboard/services/undo" method="post">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
@@ -257,4 +257,24 @@
             </div>
         </div>
     </form>
+</div>
+
+<!-- Done Modal -->
+<div id="doneService" class="modal fade DoneModal">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h4 class="modal-title w-100">Operation Done</h4>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">The Operation on Service Completed </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success btn-block" onclick="window.location.href='/dashboard/services';">OK</button>
+            </div>
+        </div>
+    </div>
 </div>

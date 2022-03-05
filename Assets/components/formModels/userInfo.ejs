@@ -1,5 +1,5 @@
 <!-- Edit Info Module  -->
-<div class="modal fade show" onsubmit="$('#editPersonalInfo').modal('hide'); $('#doneEditUserInfo').modal('show');" id="editPersonalInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+<div class="modal fade show" onsubmit="$('#editPersonalInfo').modal('hide'); $('#doneModale').modal('show');" id="editPersonalInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
         <div class="modal-content p-3">
             <form method="post" action="/dashboard" enctype="multipart/form-data">
@@ -66,7 +66,7 @@
 </div>
 
 <!-- Edit Avater Module  -->
-<div class="modal fade show" id="editImage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+<div class="modal fade show" id="editImage" onsubmit="$('#editImage').modal('hide'); $('#doneModale').modal('show');" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
         <div class="modal-content p-3">
             <form method="post" action="/dashboard/avater/edit" enctype="multipart/form-data">
@@ -81,14 +81,14 @@
 
                     <!-- Form Group (Current Image)-->
                     <div class="mb-3">
-                        <img src="/uploads/<%= userInfo.avater %>" alt="MyImage" style="width: 300px; display: block; margin: auto;">
+                        <img src="/uploads/<%= userInfo.avater %>" alt="MyImage" style="width: 300px; display: block; margin: auto;" id="img">
                         <label class="small mb-1" style="display: block; width: fit-content; margin: 10px auto;" for="curr_image">Cuurent Image</label>
                     </div>
 
                     <!-- Form Group (Image )-->
                     <div class="mb-3">
                         <label class="small mb-1" for="avater">Image </label>
-                        <input name="avater" class="form-control" id="avater" type="file" required>
+                        <input name="avater" class="form-control" id="avater" type="file" onchange="readURL(this)" required>
                     </div>
 
 
@@ -108,7 +108,7 @@
 
 <!-- Delete Avater Module -->
 
-<div id="deleteAvater" class="modal fade deleteModal">
+<div id="deleteAvater" class="modal fade deleteModal" onsubmit="$('#deleteAvater').modal('hide'); $('#doneModale').modal('show');">
     <form action="/dashboard/avater/delete" method="post">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
@@ -134,17 +134,17 @@
 
 
 <!-- Done Modal -->
-<div id="doneEditUserInfo" class="modal fade DoneModal">
+<div id="doneModale" class="modal fade DoneModal">
     <div class="modal-dialog modal-confirm">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="icon-box">
                     <i class="fas fa-check-circle"></i>
                 </div>
-                <h4 class="modal-title w-100">Edit Done</h4>
+                <h4 class="modal-title w-100">Operation Done</h4>
             </div>
             <div class="modal-body">
-                <p class="text-center">Editing Your Personel Info Information Completed </p>
+                <p class="text-center">Yourt Operation Completed </p>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-success btn-block" onclick="window.location.href='/dashboard/';">OK</button>
@@ -152,3 +152,24 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(function() {
+        $('#avater').change(function() {
+            var input = this;
+            var url = $(this).val();
+            var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+            if (input.files && input.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#img').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                $('#img').attr('src', '/uploads/<%= userInfo.avater %>');
+            }
+        });
+
+    });
+</script>

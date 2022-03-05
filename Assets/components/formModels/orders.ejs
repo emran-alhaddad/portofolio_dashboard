@@ -1,6 +1,6 @@
 <!-- Delete order Module -->
 
-<div id="deleteOrder" class="modal fade deleteModal">
+<div id="deleteOrder" onsubmit="$('#deleteOrder').modal('hide'); $('#doneOrder').modal('show');" class="modal fade deleteModal">
     <form action="/dashboard/orders/delete" method="post">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
@@ -26,7 +26,7 @@
 
 <!-- Delete All Orders Module -->
 
-<div id="deleteAllOrders" class="modal fade deleteModal">
+<div id="deleteAllOrders" class="modal fade deleteModal" onsubmit="$('#deleteAllOrders').modal('hide'); $('#doneOrder').modal('show');">
     <form action="/dashboard/orders/delete_all" method="post">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
@@ -130,7 +130,7 @@
 
 <!-- Restore order Module -->
 
-<div id="restoreOrder" class="modal fade deleteModal">
+<div id="restoreOrder" class="modal fade deleteModal" onsubmit="$('#restoreOrder').modal('hide'); $('#doneOrder').modal('show');">
     <form action="/dashboard/orders/undo" method="post">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
@@ -152,4 +152,24 @@
             </div>
         </div>
     </form>
+</div>
+
+<!-- Done Modal -->
+<div id="doneOrder" class="modal fade DoneModal">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h4 class="modal-title w-100">Operation Done</h4>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">The Operation on Order Completed </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success btn-block" onclick="window.location.href='/dashboard/orders';">OK</button>
+            </div>
+        </div>
+    </div>
 </div>

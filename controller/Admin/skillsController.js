@@ -37,7 +37,6 @@ const addNewSkill = (req, res) => {
 
         if (fields) {
             skills.create(fields);
-            res.redirect('/dashboard/skills');
         }
 
     });
@@ -50,7 +49,7 @@ const editSkill = (req, res) => {
 
         if (fields) {
             skills.findByIdAndUpdate(fields._id, fields, { returnDocument: 'after' }, () => {});
-            res.redirect('/dashboard/skills');
+
         }
 
     });
@@ -60,13 +59,13 @@ const deleteSkill = (req, res) => {
 
     if (req.body) {
         skills.findByIdAndUpdate(req.body._id, { state: 0 }, { returnDocument: 'after' }, () => {});
-        res.redirect('/dashboard/skills');
+
     }
 }
 
 const deleteAllSkills = (req, res) => {
     skills.updateMany({ state: 1 }, { state: 0 }, { returnDocument: 'after' }, () => {});
-    res.redirect('/dashboard/skills');
+
 
 }
 
@@ -74,7 +73,7 @@ const restoreSkill = (req, res) => {
 
     if (req.body) {
         skills.findByIdAndUpdate(req.body._id, { state: 1 }, { returnDocument: 'after' }, () => {});
-        res.redirect('/dashboard/skills');
+
     }
 }
 

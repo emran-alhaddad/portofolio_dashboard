@@ -49,14 +49,14 @@ const addNewPrevWork = (req, res) => {
                         liveDemo: fields.liveDemo,
                         state: fields.state
                     });
-                    res.redirect('/dashboard/prevWorks');
+
                 } else
                     res.redirect('/dashboard/');
             } else
                 res.write(`
                 <script>
                     alert("Skill Image Must be JPG or PNG"); 
-                    window.location.pathname = "/dashboard/skills";
+                    window.location.pathname = "/dashboard/prevWorks";
                 </script>`);
 
         }
@@ -111,7 +111,7 @@ const editPrevWork = (req, res) => {
                 }, { returnDocument: 'after' }, () => {});
             }
         }
-        res.redirect('/dashboard/prevWorks');
+
     });
 }
 
@@ -119,13 +119,13 @@ const deletePrevWork = (req, res) => {
 
     if (req.body) {
         prevWorks.findByIdAndUpdate(req.body._id, { state: 0 }, { returnDocument: 'after' }, () => {});
-        res.redirect('/dashboard/prevWorks');
+
     }
 }
 
 const deleteAllPrevWorks = (req, res) => {
     prevWorks.updateMany({ state: 1 }, { state: 0 }, { returnDocument: 'after' }, () => {});
-    res.redirect('/dashboard/prevWorks');
+
 
 }
 
@@ -133,7 +133,7 @@ const restorePrevWork = (req, res) => {
 
     if (req.body) {
         prevWorks.findByIdAndUpdate(req.body._id, { state: 1 }, { returnDocument: 'after' }, () => {});
-        res.redirect('/dashboard/prevWorks');
+
     }
 }
 

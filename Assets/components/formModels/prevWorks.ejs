@@ -1,5 +1,5 @@
 <!-- Add New PrevWork Module  -->
-<div class="modal fade show" id="addPrevWork" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+<div class="modal fade show" id="addPrevWork" onsubmit="$('#addPrevWork').modal('hide'); $('#donePrevWork').modal('show');" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
         <div class="modal-content p-3">
             <form method="post" action="/dashboard/prevWorks/add" enctype="multipart/form-data">
@@ -63,7 +63,7 @@
 </div>
 
 <!-- Edit PrevWork Module  -->
-<div class="modal fade show" id="editPrevWork" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+<div class="modal fade show" id="editPrevWork" onsubmit="$('#editPrevWork').modal('hide'); $('#donePrevWork').modal('show');" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
         <div class="modal-content p-3">
             <form method="post" action="/dashboard/prevWorks/edit" enctype="multipart/form-data">
@@ -129,7 +129,7 @@
 
 <!-- Delete prevWork Module -->
 
-<div id="deletePrevWork" class="modal fade deleteModal">
+<div id="deletePrevWork" class="modal fade deleteModal" onsubmit="$('#deletePrevWork').modal('hide'); $('#donePrevWork').modal('show');">
     <form action="/dashboard/prevWorks/delete" method="post">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
@@ -155,7 +155,7 @@
 
 <!-- Delete All PrevWorks Module -->
 
-<div id="deleteAllPrevWorks" class="modal fade deleteModal">
+<div id="deleteAllPrevWorks" class="modal fade deleteModal" onsubmit="$('#deleteAllPrevWorks').modal('hide'); $('#donePrevWork').modal('show');">
     <form action="/dashboard/prevWorks/delete_all" method="post">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
@@ -254,7 +254,7 @@
 
 <!-- Restore prevWork Module -->
 
-<div id="restorePrevWork" class="modal fade deleteModal">
+<div id="restorePrevWork" class="modal fade deleteModal" onsubmit="$('#restorePrevWork').modal('hide'); $('#donePrevWork').modal('show');">
     <form action="/dashboard/prevWorks/undo" method="post">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
@@ -276,4 +276,24 @@
             </div>
         </div>
     </form>
+</div>
+
+<!-- Done Modal -->
+<div id="donePrevWork" class="modal fade DoneModal">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h4 class="modal-title w-100">Operation Done</h4>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">The Operation on Previouse Work Completed </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success btn-block" onclick="window.location.href='/dashboard/prevWorks';">OK</button>
+            </div>
+        </div>
+    </div>
 </div>
