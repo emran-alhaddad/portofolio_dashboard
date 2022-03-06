@@ -8,6 +8,7 @@ const experiencesRoute = require('./Routes/Admin/experiencesRoutes');
 const prevWorksRoute = require('./Routes/Admin/prevWorksRoutes');
 const servicesRoute = require('./Routes/Admin/servicesRoutes');
 const ordersRoute = require('./Routes/Admin/ordersRoutes');
+const settingRoutes = require('./Routes/Admin/settingRoutes');
 const contaciInfoRoute = require('./Routes/Admin/contactInfoRoutes');
 const loginRoute = require('./Routes/Admin/loginRoutes');
 const { isLogedIn, logOut } = require('./controller/Admin/loginController');
@@ -45,5 +46,6 @@ server.use('/dashboard/services/', servicesRoute);
 server.use('/dashboard/prevWorks/', prevWorksRoute);
 server.use('/dashboard/contact/', contaciInfoRoute);
 server.use('/dashboard/orders/', ordersRoute);
+server.use('/dashboard/settings/', settingRoutes);
 server.use('/dashboard/*', (req, res) => { res.render('./dashboardView/404') })
 server.use('*', (req, res) => { res.render('./userView/404') })

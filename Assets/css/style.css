@@ -937,3 +937,7 @@ a:hover {
         top: 0;
     }
 }
+
+:required {
+    border-left: 5px solid darkred;
+}

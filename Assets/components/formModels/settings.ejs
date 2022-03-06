@@ -1,0 +1,72 @@
+<!-- Edit Info Module  -->
+<div class="modal fade show" onsubmit="$('#editSettings').modal('hide'); $('#doneModale').modal('show');" id="editSettings" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+        <div class="modal-content p-3">
+            <form method="post" action="" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h4 class="modal-title fw-bold text-center" id="exampleModalLabel">Account Information</h4>
+                    <a href="#" data-dismiss="modal">
+                        <i class="far fa-window-close text-danger" style="font-size: 2em;"></i>
+                    </a>
+                    <input type="hidden" name="_id" value="<%= settings._id %>" id="">
+                </div>
+                <div class="modal-body">
+
+                    <!-- Form Group (User Name)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="inputUserName">User Name </label>
+                        <input name="username" class="form-control" id="inputUserName" type="text" placeholder="Enter user name" value="<%= settings.username %>" required>
+                    </div>
+
+                    <!-- Form Group (email)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="inputEmail">Email </label>
+                        <input name="email" class="form-control" id="inputEmail" type="email" placeholder="Enter Email" value="<%= settings.email %>" required>
+                    </div>
+
+                    <!-- Form Group (password)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="inputPassword">Password </label>
+                        <input name="password" class="form-control" id="inputPassword" type="password" placeholder="Enter password" value="<%= settings.password %>" required>
+                    </div>
+
+                    <!-- Form Group (confirm password)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="inputPassword2">Confirm Password </label>
+                        <input class="form-control" id="inputPassword2" type="password" placeholder="Repeate password" value="<%= settings.password %>" required>
+                    </div>
+
+                    <!-- Save changes button-->
+
+                </div>
+                <div class="modal-footer">
+                    <!-- <input type="submit" value="Save" class="btn curr-bg curr-text" data-dismiss="modal" data-toggle="modal" data-target="#DoneModal"> -->
+                    <input type="submit" value="Save" class="btn curr-bg curr-text">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Done Modal -->
+<div id="doneModale" class="modal fade DoneModal">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h4 class="modal-title w-100">Operation Done</h4>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">Your Operation Completed </p>
+                <p class="text-center">We send to you an email notification </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success btn-block" onclick="window.location.href='/dashboard/settings';">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
